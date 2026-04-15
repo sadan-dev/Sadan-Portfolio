@@ -1,0 +1,884 @@
+<!DOCTYPE html 5>
+<html lang="en" data-scroll="0">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sadan Ahmad — Web Designer & Developer</title>
+    <meta name="description" content="Sadan Ahmad — Web Designer & Developer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Funnel+Display:wght@300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <span class="loader-text">Sadan Ahmad</span>
+            <div class="loader-bar">
+                <div class="loader-fill" id="loaderFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-logo">
+            <a href="#hero">Sadan<span>✦</span></a>
+        </div>
+        <div class="nav-links">
+            <a href="#work" class="nav-link">
+                <span class="nav-link-inner">
+                    <span class="nav-link-top">Work</span>
+                    <span class="nav-link-bottom">Work</span>
+                </span>
+            </a>
+            <a href="#services" class="nav-link">
+                <span class="nav-link-inner">
+                    <span class="nav-link-top">Services</span>
+                    <span class="nav-link-bottom">Services</span>
+                </span>
+            </a>
+            <a href="#pricing" class="nav-link">
+                <span class="nav-link-inner">
+                    <span class="nav-link-top">About</span>
+                    <span class="nav-link-bottom">About</span>
+                </span>
+            </a>
+            <a href="#about" class="nav-link">
+                <span class="nav-link-inner">
+                    <span class="nav-link-top"> Pricing</span>
+                    <span class="nav-link-bottom">Pricing</span>
+                </span>
+            </a>
+            <a href="#process" class="nav-link">
+                <span class="nav-link-inner">
+                    <span class="nav-link-top">Process</span>
+                    <span class="nav-link-bottom">Process</span>
+                </span>
+            </a>
+        </div>
+        <div class="nav-combo">
+            <span class="nav-combo-badge">
+                <span class="badge-dot"></span>
+                Available for Projects
+            </span>
+            <a href="#contact" class="nav-combo-btn">Hire Me</a>
+        </div>
+        <button class="nav-burger" id="navBurger" aria-label="Menu">
+            <span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#work" class="mobile-link">Work</a>
+        <a href="#about" class="mobile-link">Services</a>
+        <a href="#skills" class="mobile-link">About</a>
+        <a href="#contact" class="mobile-link">Pricing</a>
+        <a href="#contact" class="mobile-link">Process</a>
+
+        <!-- ADD THIS AT THE BOTTOM -->
+        <div class="mobile-menu-combo">
+            <span class="nav-combo-badge">
+                <span class="badge-dot"></span>
+                Available for Projects
+            </span>
+            <a href="#contact" class="nav-combo-btn">
+                <span>Hire Me</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-orb orb-1"></div>
+            <div class="hero-orb orb-2"></div>
+            <div class="hero-grid"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="line-wrap"><span class="line">Crafting Digital</span></span>
+                <span class="line-wrap"><span class="line">Experiences That</span></span>
+                <!-- BEFORE -->
+                <!-- <span class="line-wrap"><span class="line accent-line">Convert.</span></span> -->
+                <!-- AFTER -->
+                <span class="line-wrap">
+                    <span class="line accent-line hero-tilt-word">
+                        Convert.
+                        <!-- floating icon bubbles -->
+                        <span class="tilt-icon tilt-icon-1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round">
+                                <rect x="3" y="3" width="18" height="14" rx="2" />
+                                <path d="M8 21h8M12 17v4" />
+                            </svg>
+                        </span>
+                        <span class="tilt-icon tilt-icon-2">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round">
+                                <rect x="3" y="3" width="7" height="7" rx="1" />
+                                <rect x="14" y="3" width="7" height="7" rx="1" />
+                                <rect x="3" y="14" width="7" height="7" rx="1" />
+                                <rect x="14" y="14" width="7" height="7" rx="1" />
+                            </svg>
+                        </span>
+                        <span class="tilt-icon tilt-icon-3">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round">
+                                <path d="M12 20V10" />
+                                <path d="M18 20V4" />
+                                <path d="M6 20v-4" />
+                            </svg>
+                        </span>
+                    </span>
+                </span>
+            </h1>
+            <!-- BEFORE
+            <p class="hero-sub">
+                I'm <strong>Sadan Ahmad</strong> — Web Designer & Developer with
+                <strong>4.5 years</strong> of turning brands into powerful digital presences.
+            </p> -->
+            <!-- AFTER -->
+            <p class="hero-sub">
+                I'm
+                <span class="inline-photo-wrap">
+                    <strong>Sadan Ahmad</strong>
+                    <img src="images/sadan-headshot.png" alt="Sadan Ahmad" class="inline-photo" />
+                </span>
+                Web Designer & Developer with
+                <strong>4.5 years</strong> of turning brands into <strong>powerful digital presences</strong>.
+            </p>
+            <div class="hero-actions">
+                <!-- <a href="#work" class="btn btn-primary">
+                    <span>View My Work</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a> -->
+                <!-- AFTER -->
+                <a href="#work" class="btn btn-primary btn-magnetic">
+                    <span class="btn-magnetic-fill"></span>
+                    <span class="btn-label">View My Work</span>
+                    <!-- <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path class="arrow-line" d="M4 12L20 12" />
+                        <path class="arrow-head" d="M14 6L20 12L14 18" />
+                    </svg> -->
+                </a>
+                <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+            </div>
+            <!-- <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-num" data-count="4.5">0</span>
+                    <span class="stat-label">Years Exp.</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-num" data-count="60">0</span><span class="stat-suffix">+</span>
+                    <span class="stat-label">Projects Done</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-num" data-count="40">0</span><span class="stat-suffix">+</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+            </div> -->
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-num-wrap">
+                        <span class="stat-num" data-count="4.5">0</span>
+                    </div>
+                    <span class="stat-label">Years Exp</span>
+                </div>
+
+                <!-- <div class="stat-divider"></div> -->
+
+                <div class="stat">
+                    <div class="stat-num-wrap">
+                        <span class="stat-num" data-count="60">0</span>
+                        <svg class="stat-suffix-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17L17 7" />
+                            <path d="M7 7h10v10" />
+                        </svg>
+                    </div>
+                    <span class="stat-label">Projects Done</span>
+                </div>
+
+                <!-- <div class="stat-divider"></div> -->
+
+                <div class="stat">
+                    <div class="stat-num-wrap">
+                        <span class="stat-num" data-count="40">0</span>
+                        <svg class="stat-suffix-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17L17 7" />
+                            <path d="M7 7h10v10" />
+                        </svg>
+                    </div>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-hint">
+            <div class="scroll-line"></div>
+            <!-- <span>Scroll</span> -->
+        </div>
+    </section>
+
+    <!-- TICKER STRIP -->
+    <div class="ticker-strip">
+        <div class="ticker-track">
+            <div class="ticker-item">WordPress <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Shopify <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Webflow <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Figma <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Automation <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">UI/UX Design <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">E-commerce <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Web Development <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Web Design <span class="ticker-dot">✦</span></div>
+            <!-- Duplicate for seamless loop -->
+            <div class="ticker-item">WordPress <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Shopify <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Webflow <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Figma <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Automation <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">UI/UX Design <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">E-commerce <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Web Development <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Web Design <span class="ticker-dot">✦</span></div>
+            <!-- Duplicate for seamless loop -->
+            <div class="ticker-item">WordPress <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Shopify <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Webflow <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Figma <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Automation <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">UI/UX Design <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">E-commerce <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Web Development <span class="ticker-dot">✦</span></div>
+            <div class="ticker-item">Web Design <span class="ticker-dot">✦</span></div>
+        </div>
+    </div>
+
+    <!-- WORK SECTION -->
+    <section class="work" id="work">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">02 <em>—</em> Selected Work</span>
+                <h2 class="section-title">Projects that <em>speak</em> for themselves</h2>
+            </div>
+
+            <div class="projects-grid">
+
+                <!-- Project 1 -->
+                <div class="project-card" data-index="01">
+                    <div class="project-img-wrap">
+                        <div class="project-img"
+                            style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
+                            <div class="project-mockup">
+                                <div class="mockup-bar">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="mockup-content">
+                                    <div class="mockup-line w-60"></div>
+                                    <div class="mockup-line w-40"></div>
+                                    <div class="mockup-block"></div>
+                                    <div class="mockup-line w-80"></div>
+                                    <div class="mockup-line w-50"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <span class="btn project-view-btn">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-num">01</span>
+                            <div class="project-tags">
+                                <span class="tag">Shopify</span>
+                                <span class="tag">E-commerce</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">LuxeStyle — Fashion Store</h3>
+                        <p class="project-desc">A premium Shopify store with custom theme development, boosting
+                            conversion rate by 40% with optimized UX flows and speed enhancements.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" data-index="02">
+                    <div class="project-img-wrap">
+                        <div class="project-img"
+                            style="background: linear-gradient(135deg, #0d0d0d 0%, #1a0a0a 50%, #2d1515 100%);">
+                            <div class="project-mockup">
+                                <div class="mockup-bar">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="mockup-content">
+                                    <div class="mockup-hero-block"></div>
+                                    <div class="mockup-line w-70"></div>
+                                    <div class="mockup-line w-45"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <span class="btn project-view-btn">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-num">02</span>
+                            <div class="project-tags">
+                                <span class="tag">WordPress</span>
+                                <span class="tag">Agency</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">NovaTech — Agency Website</h3>
+                        <p class="project-desc">Full WordPress website build for a tech agency, featuring custom
+                            Gutenberg blocks, animations, and a 95+ PageSpeed score.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" data-index="03">
+                    <div class="project-img-wrap">
+                        <div class="project-img"
+                            style="background: linear-gradient(135deg, #0a0a0a 0%, #101020 50%, #1a1a35 100%);">
+                            <div class="project-mockup project-mockup--wide">
+                                <div class="mockup-bar">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="mockup-content mockup-content--wide">
+                                    <div class="mockup-sidebar">
+                                        <div class="mockup-line w-60"></div>
+                                        <div class="mockup-line w-40"></div>
+                                        <div class="mockup-line w-70"></div>
+                                        <div class="mockup-line w-30"></div>
+                                    </div>
+                                    <div class="mockup-main">
+                                        <div class="mockup-block-lg"></div>
+                                        <div class="mockup-line w-80"></div>
+                                        <div class="mockup-line w-50"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <span class="btn project-view-btn">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-num">03</span>
+                            <div class="project-tags">
+                                <span class="tag">Webflow</span>
+                                <span class="tag">SaaS</span>
+                                <span class="tag">Figma</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">FlowDesk — SaaS Dashboard</h3>
+                        <p class="project-desc">End-to-end design and Webflow development of a SaaS productivity
+                            dashboard. Designed in Figma, built with pixel-perfect precision.</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card" data-index="04">
+                    <div class="project-img-wrap">
+                        <div class="project-img"
+                            style="background: linear-gradient(135deg, #0a0a0a 0%, #101020 50%, #1a1a35 100%);">
+                            <div class="project-mockup project-mockup--wide">
+                                <div class="mockup-bar">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="mockup-content mockup-content--wide">
+                                    <div class="mockup-sidebar">
+                                        <div class="mockup-line w-60"></div>
+                                        <div class="mockup-line w-40"></div>
+                                        <div class="mockup-line w-70"></div>
+                                        <div class="mockup-line w-30"></div>
+                                    </div>
+                                    <div class="mockup-main">
+                                        <div class="mockup-block-lg"></div>
+                                        <div class="mockup-line w-80"></div>
+                                        <div class="mockup-line w-50"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <span class="btn project-view-btn">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-num">04</span>
+                            <div class="project-tags">
+                                <span class="tag">Webflow</span>
+                                <span class="tag">SaaS</span>
+                                <span class="tag">Figma</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">FlowDesk — SaaS Dashboard</h3>
+                        <p class="project-desc">End-to-end design and Webflow development of a SaaS productivity
+                            dashboard. Designed in Figma, built with pixel-perfect precision.</p>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card" data-index="0">
+                    <div class="project-img-wrap">
+                        <div class="project-img"
+                            style="background: linear-gradient(135deg, #050510 0%, #0a0a20 50%, #15153a 100%);">
+                            <div class="project-mockup">
+                                <div class="mockup-bar">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="mockup-content">
+                                    <div class="mockup-line w-50"></div>
+                                    <div class="mockup-cards-row">
+                                        <div class="mockup-card-sm"></div>
+                                        <div class="mockup-card-sm"></div>
+                                        <div class="mockup-card-sm"></div>
+                                    </div>
+                                    <div class="mockup-line w-60"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <span class="btn project-view-btn">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-num">05</span>
+                            <div class="project-tags">
+                                <span class="tag">Automation</span>
+                                <span class="tag">Zapier</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">AutoFlow — Business Automation</h3>
+                        <p class="project-desc">Complex business workflow automation saving 30+ hours/week for a
+                            logistics company using Make, Zapier, and custom API integrations.</p>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card" data-index="05">
+                    <div class="project-img-wrap">
+                        <div class="project-img"
+                            style="background: linear-gradient(135deg, #0a1a0a 0%, #0d1f0d 50%, #132613 100%);">
+                            <div class="project-mockup">
+                                <div class="mockup-bar">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="mockup-content">
+                                    <div class="mockup-block"></div>
+                                    <div class="mockup-line w-70"></div>
+                                    <div class="mockup-line w-40"></div>
+                                    <div class="mockup-btn-mock"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-overlay">
+                            <span class="btn project-view-btn">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-num">06</span>
+                            <div class="project-tags">
+                                <span class="tag">Figma</span>
+                                <span class="tag">Brand</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">GreenRoot — Brand Identity</h3>
+                        <p class="project-desc">Complete brand identity and UI design system for an eco-startup, from
+                            logo to full Figma component library and style guide.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-inner">
+                <div class="about-left">
+                    <span class="section-label">03 <em>—</em> About Me</span>
+                    <h2 class="section-title">The person behind<br /><em>the pixels</em></h2>
+                    <div class="about-img-wrap">
+                        <div class="about-img-placeholder">
+                            <div class="about-initials">SA</div>
+                            <div class="about-img-glow"></div>
+                        </div>
+                        <div class="about-img-tag">
+                            <span class="tag-dot"></span>
+                            Open to Work
+                        </div>
+                    </div>
+                </div>
+                <div class="about-right">
+                    <p class="about-bio lead">
+                        I'm <strong>Sadan Ahmad</strong>, a web designer and developer with <strong>4.5 years</strong>
+                        of experience building high-performance digital experiences for businesses that want to stand
+                        out and grow online.
+                    </p>
+                    <p class="about-bio">
+                        My journey started with a passion for turning ideas into beautiful, functional websites. Today,
+                        I specialize in building custom WordPress solutions, high-converting Shopify stores, seamless
+                        Webflow experiences, and intelligent automation workflows that save time and drive revenue.
+                    </p>
+                    <p class="about-bio">
+                        I don't just build websites — I craft strategic digital assets. Every project I take on is
+                        treated as a unique problem to solve, combining aesthetics with performance to deliver results
+                        clients can actually measure.
+                    </p>
+                    <div class="about-values">
+                        <div class="value-item">
+                            <span class="value-icon">◈</span>
+                            <div>
+                                <strong>Design-First</strong>
+                                <p>Every decision is intentional — from typography to spacing, nothing is random.</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <span class="value-icon">◈</span>
+                            <div>
+                                <strong>Results-Driven</strong>
+                                <p>Beautiful websites that also perform — speed, SEO, and conversions always in mind.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <span class="value-icon">◈</span>
+                            <div>
+                                <strong>Client-Focused</strong>
+                                <p>Clear communication, on-time delivery, and long-term relationships over quick fixes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-primary btn-magnetic">
+                        <span class="btn-magnetic-fill"></span>
+                        <span class="btn-label">Work With Me</span>
+                        <!-- <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path class="arrow-line" d="M4 12L20 12" />
+                        <path class="arrow-head" d="M14 6L20 12L14 18" />
+                    </svg> -->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">04 <em>—</em> Core Skills</span>
+                <h2 class="section-title">Tools I <em>master</em></h2>
+            </div>
+            <div class="skills-grid">
+
+                <div class="skill-card" data-skill="wordpress">
+                    <div class="skill-icon-wrap">
+                        <svg class="skill-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zM3.882 12c0-.977.18-1.91.504-2.773l2.777 7.608A8.14 8.14 0 013.882 12zm8.118 8.118a8.14 8.14 0 01-4.427-1.308l4.7-13.663.017.004A8.14 8.14 0 0120.118 12a8.14 8.14 0 01-8.118 8.118zM15.5 11c.414 0 .75-.336.75-.75S15.914 9.5 15.5 9.5h-1.25l.75-2.25h1.25c.414 0 .75-.336.75-.75S16.664 5.75 16.25 5.75h-2l-.5 1.5h-3l-.5-1.5H8.25a.75.75 0 000 1.5H9L9.75 9.5H8.5a.75.75 0 000 1.5H10l1.5 4.5 1.5-4.5H15.5z" />
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">WordPress</h3>
+                    <p class="skill-desc">Custom theme development, Gutenberg blocks, WooCommerce, plugin configuration
+                        & optimization.</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="95"></div>
+                    </div>
+                    <span class="skill-level">Expert</span>
+                </div>
+
+                <div class="skill-card" data-skill="shopify">
+                    <div class="skill-icon-wrap">
+                        <svg class="skill-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M15.337 23.979l7.216-1.561s-2.604-17.613-2.625-17.73a.336.336 0 00-.333-.293c-.147 0-2.943-.041-2.943-.041s-1.954-1.892-2.167-2.104v21.729h.852zm-3.67 0l.001.021H3.446L1.447 8.36a.62.62 0 01.606-.713h2.26S5.92 5.752 6.34 5.355V4.9a4.8 4.8 0 014.8-4.8 4.79 4.79 0 013.393 1.407L11.667 2.86v21.119zm-1.527-17.02c-.04 0-.083.009-.124.027L8.98 7.68c.22-1.01.739-1.897 1.477-2.524A3.66 3.66 0 0110.14 6.96zm1.527-5.568a3.564 3.564 0 00-2.58 1.09c.988.282 1.795.97 2.25 1.878L13 3.503a3.564 3.564 0 00-1.333-.111z" />
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">Shopify</h3>
+                    <p class="skill-desc">Store setup, custom theme dev with Liquid, apps configuration, conversion
+                        optimization.</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="90"></div>
+                    </div>
+                    <span class="skill-level">Expert</span>
+                </div>
+
+                <div class="skill-card" data-skill="webflow">
+                    <div class="skill-icon-wrap">
+                        <svg class="skill-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M17.077 0c-.424 1.674-1.553 3.42-2.87 4.547C12.89 5.78 11.25 6.463 9.2 6.463h-.31L6.463 16.53c-.12.44-.182.898-.182 1.36 0 1.12.384 2.187 1.087 3.028C8.175 21.78 9.19 22.248 10.25 22.25a4.38 4.38 0 003.28-1.507c.77-.908 1.198-2.07 1.198-3.277V17.1l2.349 5.15h3.177l-3.897-8.56c.818-.608 1.545-1.306 2.163-2.079.876-1.1 1.543-2.343 1.956-3.666.338-1.066.524-2.174.524-3.29V4.5l-.001-.024A4.46 4.46 0 0020.82.65 4.387 4.387 0 0017.077 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">Webflow</h3>
+                    <p class="skill-desc">Visual development, CMS setup, interactions, animations, and SEO-optimized
+                        publishing.</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="88"></div>
+                    </div>
+                    <span class="skill-level">Advanced</span>
+                </div>
+
+                <div class="skill-card" data-skill="figma">
+                    <div class="skill-icon-wrap">
+                        <svg class="skill-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M15.332 8.668a3.333 3.333 0 000-6.663H8.668a3.333 3.333 0 000 6.663 3.333 3.333 0 000 6.665 3.333 3.333 0 006.665 0V12a3.332 3.332 0 003.332-3.332zm-6.664 0a1.333 1.333 0 110-2.666h6.664a1.333 1.333 0 110 2.666H8.668zm0 6.665a1.333 1.333 0 110-2.667 1.333 1.333 0 010 2.667zm6.664 0a1.333 1.333 0 110-2.667 1.333 1.333 0 010 2.667z" />
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">Figma</h3>
+                    <p class="skill-desc">UI/UX design, prototyping, design systems, component libraries, and developer
+                        handoff.</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="92"></div>
+                    </div>
+                    <span class="skill-level">Expert</span>
+                </div>
+
+                <div class="skill-card" data-skill="automation">
+                    <div class="skill-icon-wrap">
+                        <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path
+                                d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L6.75 2.906m-.63 1.536l-.399-1.467m10.562 17.017l-.399-1.466m0-15.078l-.399 1.467m.399 13.611l.399 1.467"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="skill-name">Automation</h3>
+                    <p class="skill-desc">Make (Integromat), Zapier, n8n — complex multi-step workflows, API
+                        integrations & no-code solutions.</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="85"></div>
+                    </div>
+                    <span class="skill-level">Advanced</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">05 <em>—</em> My Process</span>
+                <h2 class="section-title">How I bring your <em>vision</em> to life</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <span class="step-num">01</span>
+                    <div class="step-icon">◎</div>
+                    <h3>Discover</h3>
+                    <p>Deep dive into your business, goals, and target audience. Understanding before building.</p>
+                </div>
+                <div class="process-connector">→</div>
+                <div class="process-step">
+                    <span class="step-num">02</span>
+                    <div class="step-icon">◑</div>
+                    <h3>Design</h3>
+                    <p>Wireframes → high-fidelity mockups in Figma. Your feedback shapes every pixel.</p>
+                </div>
+                <div class="process-connector">→</div>
+                <div class="process-step">
+                    <span class="step-num">03</span>
+                    <div class="step-icon">◐</div>
+                    <h3>Develop</h3>
+                    <p>Pixel-perfect development with clean code, performance optimization, and cross-device testing.
+                    </p>
+                </div>
+                <div class="process-connector">→</div>
+                <div class="process-step">
+                    <span class="step-num">04</span>
+                    <div class="step-icon">●</div>
+                    <h3>Deliver</h3>
+                    <p>Launch, post-launch support, and handoff with full documentation and training.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">06 <em>—</em> Testimonials</span>
+                <h2 class="section-title">What clients <em>say</em></h2>
+            </div>
+            <div class="testimonials-track" id="testimonialsTrack">
+                <div class="testimonial-card">
+                    <div class="testi-quote">"</div>
+                    <p class="testi-text">Sadan completely transformed our Shopify store. The new design is stunning,
+                        and our conversion rate jumped 38% in the first month. Absolutely exceptional work.</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar">JM</div>
+                        <div>
+                            <strong>James Miller</strong>
+                            <span>CEO, LuxeStyle Co.</span>
+                        </div>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testi-quote">"</div>
+                    <p class="testi-text">Working with Sadan was a seamless experience from start to finish. He
+                        understood our brand vision and delivered a Webflow site that exceeded all expectations.</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar">SR</div>
+                        <div>
+                            <strong>Sarah Rodriguez</strong>
+                            <span>Founder, NovaTech Agency</span>
+                        </div>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testi-quote">"</div>
+                    <p class="testi-text">The automation workflows Sadan built saved our team over 25 hours per week.
+                        ROI was achieved in the first month. A true professional who delivers results.</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar">AK</div>
+                        <div>
+                            <strong>Ali Khan</strong>
+                            <span>Operations Director, FlowDesk</span>
+                        </div>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="cta-band">
+        <div class="cta-band-inner">
+            <div class="cta-band-track">
+                <span>Let's Work Together</span>
+                <span class="cta-star">✦</span>
+                <span>Start a Project</span>
+                <span class="cta-star">✦</span>
+                <span>Let's Work Together</span>
+                <span class="cta-star">✦</span>
+                <span>Start a Project</span>
+                <span class="cta-star">✦</span>
+                <span>Let's Work Together</span>
+                <span class="cta-star">✦</span>
+                <span>Start a Project</span>
+                <span class="cta-star">✦</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-inner">
+                <div class="contact-left">
+                    <span class="section-label">07 <em>—</em> Contact</span>
+                    <h2 class="section-title">Ready to build<br />something <em>great?</em></h2>
+                    <p class="contact-sub">Whether you need a new website, a Shopify store, a Webflow build, or
+                        automation systems — let's talk about how I can help grow your business.</p>
+                    <div class="contact-details">
+                        <a href="mailto:hello@sadanahmad.com" class="contact-link">
+                            <span class="contact-icon">✉</span>
+                            hello@sadanahmad.com
+                        </a>
+                        <a href="https://wa.me/923000000000" class="contact-link" target="_blank">
+                            <span class="contact-icon">✆</span>
+                            WhatsApp Me
+                        </a>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                        <a href="#" class="social-link" aria-label="Behance">Bē</a>
+                        <a href="#" class="social-link" aria-label="Upwork">Up</a>
+                        <a href="#" class="social-link" aria-label="Fiverr">F</a>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Smith" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="john@company.com" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">What do you need?</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service...</option>
+                                <option value="wordpress">WordPress Development</option>
+                                <option value="shopify">Shopify Store</option>
+                                <option value="webflow">Webflow Website</option>
+                                <option value="figma">UI/UX Design (Figma)</option>
+                                <option value="automation">Automation Setup</option>
+                                <option value="other">Other / Let's Discuss</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell me about your project</label>
+                            <textarea id="message" name="message" rows="5"
+                                placeholder="Describe your project, goals, timeline..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-magnetic btn-full">
+                            <span class="btn-magnetic-fill"></span>
+                            <span class="btn-label">Send Message</span>
+                            <!-- <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path class="arrow-line" d="M4 12L20 12" />
+                        <path class="arrow-head" d="M14 6L20 12L14 18" />
+                        </svg> -->
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo">Sadan<span>.</span></div>
+                <p class="footer-copy">© 2025 Sadan Ahmad. Crafted with care.</p>
+                <div class="footer-links">
+                    <a href="#hero">Top ↑</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
