@@ -1399,7 +1399,7 @@ button {
     background: rgba(8, 8, 8, 0.7);
     backdrop-filter: blur(4px);
     display: flex;
-    align-items: center;
+    align-items: center; 
     justify-content: center;
     opacity: 0;
     transition: opacity 0.3s var(--ease-out);
