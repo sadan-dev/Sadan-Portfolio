@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Stagger children
             if (el.parentElement.children.length > 1) {
                 const idx = Array.from(el.parentElement.children).indexOf(el);
-                if (idx > 0 && idx < 5) {
+                if (idx > 0 && idx < 12) {
                     el.classList.add(`reveal-delay-${idx}`);
                 }
             }

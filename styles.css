@@ -1229,7 +1229,7 @@ button {
     border-radius: var(--radius-lg);
     background: var(--bg-2);
     overflow: hidden;
-    transition: border-color 0.3s, transform 0.4s var(--ease-out);
+    transition: border-color 1s, transform 1s var(--ease-out);
     cursor: pointer;
 }
 
@@ -1241,25 +1241,238 @@ button {
 .project-img-wrap {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 8;
 }
 
 .project-card--wide .project-img-wrap {
     aspect-ratio: 21 / 9;
 }
 
-.project-img {
+/* .project-img-1 {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.6s var(--ease-out);
+    transition: transform 2s var(--ease-out);
+} */
+
+.project-img-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 2s var(--ease-out);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* background: var(--bg-3); */
+    background: linear-gradient(235deg,
+            var(--bg-3) 30%,
+            rgba(3, 14, 254, 1) 55%);
+    /* fallback while loading */
 }
 
-.project-card:hover .project-img {
-    transform: scale(1.03);
+.project-img-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 2s var(--ease-out);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* background: var(--bg-3); */
+    background: linear-gradient(235deg,
+            var(--bg-3) 30%,
+            rgba(239, 191, 63, 1) 55%);
+    /* fallback while loading */
 }
+
+.project-img-3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 2s var(--ease-out);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* background: var(--bg-3); */
+    background: linear-gradient(235deg,
+            var(--bg-3) 30%,
+            rgba(0, 181, 64, 1) 55%);
+    /* fallback while loading */
+}
+
+.project-img-4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 2s var(--ease-out);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* background: var(--bg-3); */
+    background: linear-gradient(235deg,
+            var(--bg-3) 30%,
+            rgba(243, 160, 2, 1) 55%);
+    /* fallback while loading */
+}
+
+.project-img-5 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 2s var(--ease-out);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* background: var(--bg-3); */
+    background: linear-gradient(235deg,
+            var(--bg-3) 30%,
+            rgba(154, 104, 59, 1) 55%);
+    /* fallback while loading */
+}
+
+.project-img-6 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 2s var(--ease-out);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* background: var(--bg-3); */
+    background: linear-gradient(235deg,
+            var(--bg-3) 30%,
+            rgba(162, 114, 116, 1) 55%);
+    /* fallback while loading */
+}
+
+.project-img-7 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 2s var(--ease-out);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* background: var(--bg-3); */
+    background: linear-gradient(235deg,
+            var(--bg-3) 30%,
+            rgba(126, 17, 31, 1) 55%);
+    /* fallback while loading */
+}
+
+.project-img-8 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 2s var(--ease-out);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* background: var(--bg-3); */
+    background: linear-gradient(235deg,
+            var(--bg-3) 30%,
+            rgba(1, 157, 135, 1) 55%);
+    /* fallback while loading */
+}
+
+.project-img-9 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 2s var(--ease-out);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* background: var(--bg-3); */
+    background: linear-gradient(235deg,
+            var(--bg-3) 30%,
+            rgba(255, 106, 0, 1) 55%);
+    /* fallback while loading */
+}
+
+.project-img-10 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 2s var(--ease-out);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* background: var(--bg-3); */
+    background: linear-gradient(235deg,
+            var(--bg-3) 30%,
+            rgba(159, 110, 254, 1) 55%);
+    /* fallback while loading */
+}
+
+.project-img-11 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 2s var(--ease-out);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* background: var(--bg-3); */
+    background: linear-gradient(235deg,
+            var(--bg-3) 30%,
+            rgba(18, 95, 205, 1) 55%);
+    /* fallback while loading */
+}
+
+.project-img-12 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 2s var(--ease-out);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* background: var(--bg-3); */
+    background: linear-gradient(235deg,
+            var(--bg-3) 30%,
+            rgba(162, 131, 94, 1) 55%);
+    /* fallback while loading */
+}
+
+.project-screenshot {
+    width: 500px;
+    height: 100%;
+    object-fit: contain;
+    /* fills card perfectly */
+    object-position: bottom;
+    /* shows top of website first */
+    display: block;
+    transition: transform 3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* .project-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            transparent 40%,
+            var(--bg-2) 90%);
+    pointer-events: none;
+} */
+
+/* .project-card:hover .project-img {
+    transform: scale(1.03);
+} */
 
 /* Mockup browser */
 .project-mockup {
@@ -1397,12 +1610,12 @@ button {
     position: absolute;
     inset: 0;
     background: rgba(8, 8, 8, 0.7);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(10px);
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s var(--ease-out);
+    transition: opacity 0.5s var(--ease-out);
 }
 
 .project-card:hover .project-overlay {
@@ -1418,30 +1631,22 @@ button {
     transform: translateY(0px);
     color: var(--text);
     border: 1px solid var(--border-2);
-    background: rgba(8, 8, 8, 0.5);
     backdrop-filter: blur(30px);
 
-    /* ✅ FIX: transition yahan shift ki */
     transition: transform 0.2s var(--ease-out),
         background-color 0.2s var(--ease-out),
         color 0.2s var(--ease-out),
         border-color 0.2s var(--ease-out);
 }
 
+.project-card:hover .project-view-btn {
+    transform: translateY(-5px);
+}
+
 .project-view-btn:hover {
     border-color: var(--accent);
     color: var(--accent);
-    transform: translateY(-2px);
-}
-
-.project-view-btn svg {
-    width: 14px;
-    height: 14px;
-}
-
-.project-card:hover .project-view-btn {
-    /* transform: translateY(-2px); */
-    background: rgba(8, 8, 8, 0.5);
+    transform: translateY(-7px) !important;
 }
 
 /* .project-view-btn {
@@ -1500,7 +1705,7 @@ button {
 
 .project-tags {
     display: flex;
-    gap: 6px;
+    gap: 5px;
     flex-wrap: wrap;
 }
 
@@ -1514,6 +1719,12 @@ button {
     color: var(--text-2);
     border: 1px solid var(--border);
     letter-spacing: 0.02em;
+}
+
+.project-flag {
+    width: 27px;
+    height: 17px;
+    border-radius: 9px;
 }
 
 .project-title {
@@ -2196,6 +2407,38 @@ button {
 
 .reveal-delay-4 {
     transition-delay: 0.4s;
+}
+
+.reveal-delay-5 {
+    transition-delay: 0.5s;
+}
+
+.reveal-delay-6 {
+    transition-delay: 0.6s;
+}
+
+.reveal-delay-7 {
+    transition-delay: 0.7s;
+}
+
+.reveal-delay-8 {
+    transition-delay: 0.8s;
+}
+
+.reveal-delay-9 {
+    transition-delay: 0.9s;
+}
+
+.reveal-delay-10 {
+    transition-delay: 0.10s;
+}
+
+.reveal-delay-11 {
+    transition-delay: 0.11s;
+}
+
+.reveal-delay-12 {
+    transition-delay: 0.12s;
 }
 
 /* ============================================
