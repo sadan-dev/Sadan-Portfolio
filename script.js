@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     function initScrollReveal() {
         const revealEls = document.querySelectorAll(
-            '.project-card, .skill-card, .testimonial-card, .process-step, .about-inner, .contact-inner, .section-header'
+            '.service-row, .project-card, .skill-card, .testimonial-card, .process-step, .about-inner, .contact-inner, .section-header'
         );
 
         revealEls.forEach((el, i) => {
@@ -186,6 +186,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
         revealEls.forEach(el => observer.observe(el));
     }
+
+    // ============================================
+    // SERVICES — CURSOR FOLLOWING POPOVER
+    // ============================================
+    const serviceRows = document.querySelectorAll('.service-row');
+
+    serviceRows.forEach(row => {
+        const popover = row.querySelector('.service-popover');
+        if (!popover) return;
+
+        // Move popover to body so it's never clipped
+        document.body.appendChild(popover);
+
+        let mouseX = 0, mouseY = 0;
+        let popX = 0, popY = 0;
+        let rafId = null;
+        let isHovering = false;
+
+        // Smooth follow with lerp
+        function followCursor() {
+            if (!isHovering) return;
+
+            popX += (mouseX - popX) * 0.1;
+            popY += (mouseY - popY) * 0.1;
+
+            // Offset so popover doesn't sit under cursor
+            const offsetX = 24;
+            const offsetY = -120;
+
+            // Keep within viewport
+            const pw = popover.offsetWidth || 300;
+            const ph = popover.offsetHeight || 220;
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+
+            let finalX = popX + offsetX;
+            let finalY = popY + offsetY;
+
+            // Flip to left if too close to right edge
+            if (finalX + pw + 20 > vw) finalX = popX - pw - offsetX;
+            // Flip down if too close to top
+            if (finalY < 10) finalY = popY + 24;
+            // Keep inside bottom
+            if (finalY + ph > vh - 10) finalY = vh - ph - 10;
+
+            popover.style.left = finalX + 'px';
+            popover.style.top = finalY + 'px';
+
+            rafId = requestAnimationFrame(followCursor);
+        }
+
+        row.addEventListener('mouseenter', () => {
+            isHovering = true;
+            popover.classList.add('visible');
+            rafId = requestAnimationFrame(followCursor);
+        });
+
+        row.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        row.addEventListener('mouseleave', () => {
+            isHovering = false;
+            popover.classList.remove('visible');
+            cancelAnimationFrame(rafId);
+        });
+    });
 
 
     // ============================================
