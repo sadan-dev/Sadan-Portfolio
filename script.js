@@ -443,4 +443,61 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ============================================
+    // PRICING V2 — Vercel Style JS
+    // Add inside DOMContentLoaded in main.js
+    // (Remove or replace old pricing JS first)
+    // ============================================
+
+    // ── PRICING COLS SCROLL REVEAL ──
+    const pricingCols = document.querySelectorAll('.pricing-col');
+
+    if (pricingCols.length) {
+        // Set initial hidden state
+        pricingCols.forEach((col, i) => {
+            col.style.opacity = '0';
+            col.style.transform = 'translateY(28px)';
+            col.style.transition = `opacity 0.6s cubic-bezier(0.16,1,0.3,1),
+                             transform 0.6s cubic-bezier(0.16,1,0.3,1)`;
+        });
+
+        const colObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+
+                const col = entry.target;
+                const idx = Array.from(pricingCols).indexOf(col);
+
+                // Stagger: left → center → right
+                setTimeout(() => {
+                    col.style.opacity = '1';
+                    col.style.transform = 'translateY(0)';
+                }, idx * 100);
+
+                colObserver.unobserve(col);
+            });
+        }, { threshold: 0.1 });
+
+        pricingCols.forEach(col => colObserver.observe(col));
+    }
+
+    // ── PRICING BUTTON ARROW ANIMATION ──
+    document.querySelectorAll('.pricing-cta-btn').forEach(btn => {
+        const svg = btn.querySelector('svg');
+        if (!svg) return;
+
+        // Set base transition directly on element
+        svg.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+        svg.style.transform = 'translateX(0)';
+        svg.style.display = 'block';
+
+        btn.addEventListener('mouseenter', () => {
+            svg.style.transform = 'translateX(5px)';
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            svg.style.transform = 'translateX(0)';
+        });
+    });
+
 });
