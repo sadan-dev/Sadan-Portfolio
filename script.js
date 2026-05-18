@@ -500,4 +500,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ============================================
+    // PROCESS V4 — Scroll Reveal
+    // Add inside DOMContentLoaded in main.js
+    // Remove old process JS first
+    // ============================================
+
+    const pbCards = document.querySelectorAll('.pb-card');
+
+    if (pbCards.length) {
+        pbCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(24px)';
+            card.style.transition = 'opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1)';
+        });
+
+        const pbObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const idx = Array.from(pbCards).indexOf(entry.target);
+
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, idx * 80);
+
+                pbObserver.unobserve(entry.target);
+            });
+        }, { threshold: 0.08 });
+
+        pbCards.forEach(c => pbObserver.observe(c));
+    }
+
 });

@@ -955,7 +955,6 @@
             <div class="pricing-header section-header">
                 <span class="section-label">05 <em>—</em> Investment</span>
                 <h2 class="section-title">Simple, Transparent <em>Pricing</em></h2>
-                <p class="pricing-sub">No hidden fees. No surprises. Just real results that Drives Revenue.</p>
             </div>
 
             <!-- Pricing Table -->
@@ -1519,116 +1518,267 @@
 
     </section>
 
-    <!-- PROCESS SECTION -->
-    <section class="process">
+    <!-- ============================================
+     PROCESS SECTION V4
+     Row 1: 3 equal cards
+     Row 2: 2 equal cards
+     Row 3: 1 full-width card
+     Replace your existing process section
+     ============================================ -->
+    <section class="process-section" id="process">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">05 <em>—</em> My Process</span>
-                <h2 class="section-title">How I bring your <em>vision</em> to life</h2>
+
+            <!-- Header -->
+            <div class="process-header section-header">
+                <span class="section-label">06 <em>—</em> How It Works</span>
+                <h2 class="section-title">A process built for<br /><em>clarity and results</em></h2>
             </div>
-            <div class="process-steps">
-                <div class="process-step">
-                    <span class="step-num">01</span>
-                    <div class="step-icon">◎</div>
-                    <h3>Discover</h3>
-                    <p>Deep dive into your business, goals, and target audience. Understanding before building.</p>
+
+            <!-- Bento Grid -->
+            <div class="pb-grid">
+
+                <!-- ══ ROW 1: 3 equal cards ══ -->
+
+                <!-- Card 1: Discovery -->
+                <div class="pb-card" data-index="0">
+                    <div class="pb-illus pb-illus--discovery">
+                        <!-- Static chat bubbles -->
+                        <div class="disc-bubble disc-bubble--1">
+                            <span class="disc-dot"></span>
+                            <span class="disc-dot"></span>
+                            <span class="disc-dot"></span>
+                        </div>
+                        <div class="disc-bubble disc-bubble--2">
+                            <div class="disc-line disc-line--1"></div>
+                            <div class="disc-line disc-line--2"></div>
+                        </div>
+                        <div class="disc-bubble disc-bubble--3">
+                            <div class="disc-line disc-line--1"></div>
+                        </div>
+                        <div class="disc-badge">
+                            Free 30 min
+                        </div>
+                    </div>
+                    <div class="pb-text">
+                        <span class="pb-step-tag">01</span>
+                        <h3 class="pb-title">Discovery Call</h3>
+                        <p class="pb-desc">We start with a free 30-minute call. I learn your business, goals, and what
+                            success looks like — shaping everything that follows.</p>
+                    </div>
                 </div>
-                <div class="process-connector">→</div>
-                <div class="process-step">
-                    <span class="step-num">02</span>
-                    <div class="step-icon">◑</div>
-                    <h3>Design</h3>
-                    <p>Wireframes → high-fidelity mockups in Figma. Your feedback shapes every pixel.</p>
+
+                <!-- Card 2: Proposal -->
+                <div class="pb-card" data-index="1">
+                    <div class="pb-illus pb-illus--proposal">
+                        <div class="prop-doc prop-doc--back"></div>
+                        <div class="prop-doc prop-doc--mid"></div>
+                        <div class="prop-doc prop-doc--front">
+                            <div class="prop-doc-bar"></div>
+                            <div class="prop-line prop-line--w80"></div>
+                            <div class="prop-line prop-line--w60"></div>
+                            <div class="prop-divider"></div>
+                            <div class="prop-line prop-line--w70"></div>
+                            <div class="prop-line prop-line--w40"></div>
+                            <div class="prop-divider"></div>
+                            <div class="prop-sign">
+                                <div class="prop-sign-line"></div>
+                                <div class="prop-sign-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pb-text">
+                        <span class="pb-step-tag">02</span>
+                        <h3 class="pb-title">Proposal & Agreement</h3>
+                        <p class="pb-desc">Detailed written proposal within 24 hours — clear scope, timeline, and
+                            pricing. 50% deposit kicks things off.</p>
+                    </div>
                 </div>
-                <div class="process-connector">→</div>
-                <div class="process-step">
-                    <span class="step-num">03</span>
-                    <div class="step-icon">◐</div>
-                    <h3>Develop</h3>
-                    <p>Pixel-perfect development with clean code, performance optimization, and cross-device testing.
-                    </p>
+
+                <!-- Card 3: Design -->
+                <div class="pb-card" data-index="2">
+                    <div class="pb-illus pb-illus--design">
+                        <div class="des-frame des-frame--outer">
+                            <div class="des-frame des-frame--mid">
+                                <div class="des-frame des-frame--inner">
+                                    <div class="des-frame-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="des-swatch des-swatch--1"></div>
+                        <div class="des-swatch des-swatch--2"></div>
+                        <div class="des-swatch des-swatch--3"></div>
+                    </div>
+                    <div class="pb-text">
+                        <span class="pb-step-tag">03</span>
+                        <h3 class="pb-title">Design & Strategy</h3>
+                        <p class="pb-desc">Every pixel designed in Figma before a single line of code. You approve
+                            everything before we build.</p>
+                    </div>
                 </div>
-                <div class="process-connector">→</div>
-                <div class="process-step">
-                    <span class="step-num">04</span>
-                    <div class="step-icon">●</div>
-                    <h3>Deliver</h3>
-                    <p>Launch, post-launch support, and handoff with full documentation and training.</p>
+
+                <!-- ══ ROW 2: 2 equal cards ══ -->
+
+                <!-- Card 4: Development -->
+                <div class="pb-row-2">
+                    <div class="pb-card pb-card--half" data-index="3">
+                        <div class="pb-illus pb-illus--dev">
+                            <div class="dev-editor">
+                                <div class="dev-editor-bar">
+                                    <span class="dev-dot dev-dot--red"></span>
+                                    <span class="dev-dot dev-dot--yellow"></span>
+                                    <span class="dev-dot dev-dot--green"></span>
+                                </div>
+                                <div class="dev-code">
+                                    <div class="dev-line"><span class="dev-kw">const</span> <span
+                                            class="dev-var">site</span> = <span class="dev-str">"live"</span>;</div>
+                                    <div class="dev-line"><span class="dev-kw">function</span> <span
+                                            class="dev-fn">build</span>() {</div>
+                                    <div class="dev-line dev-line--indent"><span class="dev-str">return</span> <span
+                                            class="dev-acc">success</span>;</div>
+                                    <div class="dev-line">}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pb-text">
+                            <span class="pb-step-tag">04</span>
+                            <h3 class="pb-title">Development & Build</h3>
+                            <p class="pb-desc">Clean, optimized code built with precision. Regular progress updates —
+                                zero
+                                surprises. Tested across all devices and browsers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Review -->
+                    <div class="pb-card pb-card--half" data-index="4">
+                        <div class="pb-illus pb-illus--review">
+                            <div class="rev-radar">
+                                <div class="rev-ring rev-ring--1"></div>
+                                <div class="rev-ring rev-ring--2"></div>
+                                <div class="rev-ring rev-ring--3"></div>
+                                <!-- Static line instead of animated sweep -->
+                                <div class="rev-static-line"></div>
+                                <div class="rev-dot rev-dot--1"></div>
+                                <div class="rev-dot rev-dot--2"></div>
+                                <div class="rev-center"></div>
+                            </div>
+                        </div>
+                        <div class="pb-text">
+                            <span class="pb-step-tag">05</span>
+                            <h3 class="pb-title">Review & Refinement</h3>
+                            <p class="pb-desc">Full staging access to review everything in real time. Share feedback
+                                until
+                                you're completely satisfied — nothing goes live without approval.</p>
+                        </div>
+                    </div>
+                </div><!-- /pb-row-2 -->
+
+                <!-- ══ ROW 3: Full-width Launch card ══ -->
+
+                <!-- Card 6: Launch -->
+                <div class="pb-card pb-card--full pb-card--accent" data-index="5">
+
+                    <!-- Left: Text -->
+                    <div class="pb-launch-left">
+                        <span class="pb-step-tag pb-step-tag--accent">06</span>
+                        <h3 class="pb-title pb-title--large">Launch & Handoff</h3>
+                        <p class="pb-desc">Full deployment, domain, and SSL handled. You receive complete documentation,
+                            a video walkthrough, and a training session — so you own and understand everything fully.
+                        </p>
+                        <ul class="pb-launch-list">
+                            <li>
+                                <span>✦</span>
+                                Full deployment & go-live
+                            </li>
+                            <li>
+                                <span>✦</span>
+                                Video walkthrough & complete docs
+                            </li>
+                            <li>
+                                <span>✦</span>
+                                30-day post-launch support
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Right: Premium Dashboard Illustration -->
+                    <div class="pb-launch-right">
+                        <div class="launch-dashboard">
+
+                            <!-- Top stats row -->
+                            <div class="ld-stats-row">
+                                <div class="ld-stat-card">
+                                    <span class="ld-stat-label">Revenue</span>
+                                    <span class="ld-stat-value">$24,800</span>
+                                    <span class="ld-stat-change ld-up">↑ 38%</span>
+                                </div>
+                                <div class="ld-stat-card">
+                                    <span class="ld-stat-label">Visitors</span>
+                                    <span class="ld-stat-value">12.4k</span>
+                                    <span class="ld-stat-change ld-up">↑ 61%</span>
+                                </div>
+                                <div class="ld-stat-card">
+                                    <span class="ld-stat-label">Conversion</span>
+                                    <span class="ld-stat-value">4.8%</span>
+                                    <span class="ld-stat-change ld-up">↑ 22%</span>
+                                </div>
+                            </div>
+
+                            <!-- Chart area -->
+                            <div class="ld-chart">
+                                <div class="ld-chart-bars">
+                                    <div class="ld-bar" style="--h: 35%"></div>
+                                    <div class="ld-bar" style="--h: 50%"></div>
+                                    <div class="ld-bar" style="--h: 42%"></div>
+                                    <div class="ld-bar" style="--h: 65%"></div>
+                                    <div class="ld-bar" style="--h: 55%"></div>
+                                    <div class="ld-bar" style="--h: 78%"></div>
+                                    <div class="ld-bar" style="--h: 70%"></div>
+                                    <div class="ld-bar ld-bar--accent" style="--h: 95%"></div>
+                                </div>
+                                <!-- Trend line -->
+                                <svg class="ld-trend-line" viewBox="0 0 240 80" fill="none" preserveAspectRatio="none">
+                                    <path d="M0 70 C40 65 60 55 90 45 C120 35 140 30 170 18 C195 8 220 4 240 2"
+                                        stroke="url(#lineGrad)" stroke-width="2" stroke-linecap="round" />
+                                    <defs>
+                                        <linearGradient id="lineGrad" x1="0" y1="0" x2="240" y2="0">
+                                            <stop offset="0%" stop-color="#c8f542" stop-opacity="0.3" />
+                                            <stop offset="100%" stop-color="#c8f542" stop-opacity="1" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <!-- Peak dot -->
+                                <div class="ld-peak-dot">
+                                    <div class="ld-peak-ring"></div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom status row -->
+                            <div class="ld-status-row">
+                                <div class="ld-status-item">
+                                    <span class="ld-status-dot ld-status-dot--green"></span>
+                                    Site Live
+                                </div>
+                                <div class="ld-status-item">
+                                    <span class="ld-status-dot ld-status-dot--blue"></span>
+                                    SSL Active
+                                </div>
+                                <div class="ld-status-item">
+                                    <span class="ld-status-dot ld-status-dot--lime"></span>
+                                    SEO Indexed
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
-            </div>
+
+            </div><!-- /pb-grid -->
+
         </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">06 <em>—</em> Testimonials</span>
-                <h2 class="section-title">What clients <em>say</em></h2>
-            </div>
-            <div class="testimonials-track" id="testimonialsTrack">
-                <div class="testimonial-card">
-                    <div class="testi-quote">"</div>
-                    <p class="testi-text">Sadan completely transformed our Shopify store. The new design is stunning,
-                        and our conversion rate jumped 38% in the first month. Absolutely exceptional work.</p>
-                    <div class="testi-author">
-                        <div class="testi-avatar">JM</div>
-                        <div>
-                            <strong>James Miller</strong>
-                            <span>CEO, LuxeStyle Co.</span>
-                        </div>
-                        <div class="testi-stars">★★★★★</div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testi-quote">"</div>
-                    <p class="testi-text">Working with Sadan was a seamless experience from start to finish. He
-                        understood our brand vision and delivered a Webflow site that exceeded all expectations.</p>
-                    <div class="testi-author">
-                        <div class="testi-avatar">SR</div>
-                        <div>
-                            <strong>Sarah Rodriguez</strong>
-                            <span>Founder, NovaTech Agency</span>
-                        </div>
-                        <div class="testi-stars">★★★★★</div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testi-quote">"</div>
-                    <p class="testi-text">The automation workflows Sadan built saved our team over 25 hours per week.
-                        ROI was achieved in the first month. A true professional who delivers results.</p>
-                    <div class="testi-author">
-                        <div class="testi-avatar">AK</div>
-                        <div>
-                            <strong>Ali Khan</strong>
-                            <span>Operations Director, FlowDesk</span>
-                        </div>
-                        <div class="testi-stars">★★★★★</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA BAND -->
-    <section class="cta-band">
-        <div class="cta-band-inner">
-            <div class="cta-band-track">
-                <span>Let's Work Together</span>
-                <span class="cta-star">✦</span>
-                <span>Start a Project</span>
-                <span class="cta-star">✦</span>
-                <span>Let's Work Together</span>
-                <span class="cta-star">✦</span>
-                <span>Start a Project</span>
-                <span class="cta-star">✦</span>
-                <span>Let's Work Together</span>
-                <span class="cta-star">✦</span>
-                <span>Start a Project</span>
-                <span class="cta-star">✦</span>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- CONTACT -->
     <section class="contact" id="contact">
