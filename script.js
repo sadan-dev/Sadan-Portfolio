@@ -275,55 +275,6 @@ document.addEventListener('DOMContentLoaded', () => {
         skillFills.forEach(fill => observer.observe(fill));
     }
 
-
-    // ============================================
-    // CONTACT FORM
-    // ============================================
-    const contactForm = document.getElementById('contactForm');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', e => {
-            e.preventDefault();
-
-            const btn = contactForm.querySelector('.btn-primary');
-            const span = btn.querySelector('span');
-
-            span.textContent = 'Sending...';
-            btn.disabled = true;
-            btn.style.opacity = '0.7';
-
-            setTimeout(() => {
-                span.textContent = '✓ Message Sent!';
-                btn.style.background = '#4ade80';
-                btn.style.opacity = '1';
-                contactForm.reset();
-
-                setTimeout(() => {
-                    span.textContent = 'Send Message';
-                    btn.style.background = '';
-                    btn.disabled = false;
-                }, 3000);
-            }, 1500);
-        });
-    }
-
-
-    // ============================================
-    // PARALLAX HERO ORBS (subtle)
-    // ============================================
-    // const orbs = document.querySelectorAll('.hero-orb');
-
-    // document.addEventListener('mousemove', e => {
-    //     const x = (e.clientX / window.innerWidth - 0.5) * 20;
-    //     const y = (e.clientY / window.innerHeight - 0.5) * 20;
-
-    //     orbs.forEach((orb, i) => {
-    //         const factor = i === 0 ? 1 : -0.6;
-    //         orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
-    //     });
-    // }, { passive: true });
-
-
     // ============================================
     // ACTIVE NAV LINK on scroll
     // ============================================
@@ -530,6 +481,264 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.08 });
 
         pbCards.forEach(c => pbObserver.observe(c));
+    }
+
+    // ============================================
+    // TESTIMONIALS — Smooth Marquee
+    // Add inside DOMContentLoaded in main.js
+    // Remove old testimonials JS first
+    // ============================================
+
+    (function () {
+        const rows = document.querySelectorAll('.testi-row');
+        if (!rows.length) return;
+
+        rows.forEach(row => {
+            const track = row.querySelector('.testi-track');
+            if (!track) return;
+
+            const direction = row.dataset.direction; // "left" or "right"
+            const speed = 0.7; // px per frame — increase for faster
+            let pos = direction === 'right' ? -track.scrollWidth / 2 : 0;
+            let paused = false;
+            let rafId = null;
+
+            // Remove CSS animation — we control it via JS
+            track.style.animation = 'none';
+            track.style.transform = `translateX(${pos}px)`;
+
+            function animate() {
+                if (!paused) {
+                    if (direction === 'left') {
+                        pos -= speed;
+                        // Reset when first half scrolled out
+                        if (Math.abs(pos) >= track.scrollWidth / 2) {
+                            pos = 0;
+                        }
+                    } else {
+                        pos += speed;
+                        // Reset when back to 0
+                        if (pos >= 0) {
+                            pos = -track.scrollWidth / 2;
+                        }
+                    }
+                    track.style.transform = `translateX(${pos}px)`;
+                }
+                rafId = requestAnimationFrame(animate);
+            }
+
+            // Start animation
+            rafId = requestAnimationFrame(animate);
+
+            // Smooth pause/resume on hover
+            let targetSpeed = speed;
+            let currentSpeed = speed;
+
+            row.addEventListener('mouseenter', () => { paused = true; });
+            row.addEventListener('mouseleave', () => { paused = false; });
+
+        });
+
+    }());
+
+    // ============================================
+    // CONTACT SECTION
+    // Add inside DOMContentLoaded in main.js
+    // Remove old contact JS first
+    // ============================================
+
+    // ── EMAIL COPY BUTTON ──
+    const emailCopyBtn = document.getElementById('profileEmailCopy');
+    const emailText = document.getElementById('profileEmail');
+
+    if (emailCopyBtn && emailText) {
+        emailCopyBtn.addEventListener('click', () => {
+            const email = emailText.textContent.trim();
+
+            navigator.clipboard.writeText(email).then(() => {
+                // Show check icon
+                const iconCopy = emailCopyBtn.querySelector('.icon-copy');
+                const iconCheck = emailCopyBtn.querySelector('.icon-check');
+
+                iconCopy.style.display = 'none';
+                iconCheck.style.display = 'block';
+                emailCopyBtn.classList.add('copied');
+
+                // Reset after 2s
+                setTimeout(() => {
+                    iconCopy.style.display = 'block';
+                    iconCheck.style.display = 'none';
+                    emailCopyBtn.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const el = document.createElement('textarea');
+                el.value = email;
+                el.style.position = 'fixed';
+                el.style.opacity = '0';
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+            });
+        });
+    }
+
+    // ── FILE ATTACH LABEL UPDATE ──
+    const fileInput = document.getElementById('cf-file');
+    const attachLabel = document.getElementById('attachLabel');
+
+    if (fileInput && attachLabel) {
+        fileInput.addEventListener('change', () => {
+            const count = fileInput.files.length;
+            if (count === 0) {
+                attachLabel.textContent = 'Attach Files';
+            } else if (count === 1) {
+                const name = fileInput.files[0].name;
+                attachLabel.textContent = name.length > 16
+                    ? name.substring(0, 16) + '…'
+                    : name;
+            } else {
+                attachLabel.textContent = `${count} files attached`;
+            }
+        });
+    }
+
+    // Add remove button functionality to clear file input and reset label //
+    const removeBtn = document.getElementById('attachRemoveBtn');
+
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files.length > 0) {
+            removeBtn.style.display = 'flex'; // show ×
+        }
+    });
+
+    removeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();    // prevent label from opening file picker
+        fileInput.value = '';   // clear file input
+        attachLabel.textContent = 'Attach Files';
+        removeBtn.style.display = 'none'; // hide ×
+    });
+
+    // ── CONTACT FORM SUBMIT ──
+    const contactForm = document.getElementById('contactForm');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', e => {
+            e.preventDefault();
+
+            const submitBtn = contactForm.querySelector('.form-submit-btn');
+            const submitLabel = contactForm.querySelector('.form-submit-label');
+            const submitSvg = contactForm.querySelector('.form-submit-btn svg');
+
+            // Loading state
+            submitLabel.textContent = 'Sending…';
+            submitBtn.disabled = true;
+            if (submitSvg) submitSvg.style.display = 'none';
+
+            // Simulate send (replace with your actual form handler)
+            setTimeout(() => {
+                submitBtn.classList.add('success');
+                submitLabel.textContent = '✓ Message Sent!';
+                submitBtn.disabled = false;
+
+                // Reset after 3s
+                setTimeout(() => {
+                    submitBtn.classList.remove('success');
+                    submitLabel.textContent = 'Send Message';
+                    if (submitSvg) submitSvg.style.display = 'block';
+                    contactForm.reset();
+                    if (attachLabel) attachLabel.textContent = 'Attach Files';
+                }, 3000);
+            }, 1500);
+        });
+    }
+
+    // ── CUSTOM SELECT — Budget (single select) ──
+    initSingleSelect('budgetSelect', 'budgetPlaceholder', 'budgetValue');
+
+    // ── CUSTOM SELECT — Service (multi select) ──
+    initMultiSelect('serviceSelect', 'servicePlaceholder', 'serviceValue');
+
+
+    function initSingleSelect(wrapId, placeholderId, inputId) {
+        const wrap = document.getElementById(wrapId);
+        const placeholder = document.getElementById(placeholderId);
+        const hiddenInput = document.getElementById(inputId);
+        if (!wrap) return;
+
+        const trigger = wrap.querySelector('.cs-trigger');
+        const dropdown = wrap.querySelector('.cs-dropdown');
+        const options = wrap.querySelectorAll('.cs-option');
+
+        trigger.addEventListener('click', () => wrap.classList.toggle('open'));
+
+        options.forEach(opt => {
+            opt.addEventListener('click', () => {
+                options.forEach(o => o.classList.remove('selected'));
+                opt.classList.add('selected');
+                placeholder.textContent = opt.dataset.value;
+                placeholder.classList.add('has-value');
+                hiddenInput.value = opt.dataset.value;
+                wrap.classList.remove('open');
+            });
+        });
+
+        // Close on outside click
+        document.addEventListener('click', e => {
+            if (!wrap.contains(e.target)) wrap.classList.remove('open');
+        });
+    }
+
+
+    function initMultiSelect(wrapId, placeholderId, inputId) {
+        const wrap = document.getElementById(wrapId);
+        const placeholder = document.getElementById(placeholderId);
+        const hiddenInput = document.getElementById(inputId);
+        if (!wrap) return;
+
+        const trigger = wrap.querySelector('.cs-trigger');
+        const options = wrap.querySelectorAll('.cs-option');
+        let selected = [];
+
+        trigger.addEventListener('click', () => wrap.classList.toggle('open'));
+
+        options.forEach(opt => {
+            opt.addEventListener('click', () => {
+                const val = opt.dataset.value;
+
+                if (selected.includes(val)) {
+                    // Deselect
+                    selected = selected.filter(v => v !== val);
+                    opt.classList.remove('selected');
+                } else {
+                    // Select
+                    selected.push(val);
+                    opt.classList.add('selected');
+                }
+
+                // Update placeholder text
+                if (selected.length === 0) {
+                    placeholder.textContent = 'Select a service';
+                    placeholder.classList.remove('has-value');
+                } else if (selected.length === 1) {
+                    placeholder.textContent = selected[0];
+                    placeholder.classList.add('has-value');
+                } else {
+                    // "WordPress Development + 2" format
+                    placeholder.textContent = `${selected[0]} + ${selected.length - 1}`;
+                    placeholder.classList.add('has-value');
+                }
+
+                hiddenInput.value = selected.join(', ');
+                // Note: dropdown stays open for multi-select
+            });
+        });
+
+        document.addEventListener('click', e => {
+            if (!wrap.contains(e.target)) wrap.classList.remove('open');
+        });
     }
 
 });
