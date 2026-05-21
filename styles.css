@@ -217,7 +217,7 @@ button {
 
 .nav.scrolled {
     background: rgba(8, 8, 8, 0.5);
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-2);
 }
 
@@ -4874,6 +4874,198 @@ button {
 .footer-links a:hover {
     color: var(--accent);
     text-decoration: underline;
+}
+
+/* ============================================
+   PRIVACY POLICY POPUP — MINIMAL VERSION
+   ============================================ */
+
+.privacy-trigger {
+    font-size: 0.85rem;
+    color: var(--text);
+    font-family: var(--font-display);
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s var(--ease-out);
+}
+
+.privacy-trigger:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.privacy-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 8, 8, 0.75);
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s var(--ease-out);
+}
+
+.privacy-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.privacy-popup {
+    position: fixed;
+    right: 75px;
+    bottom: 37px;
+    width: min(400px, calc(100vw - 32px));
+    max-height: min(620px, calc(100vh - 130px));
+
+    background: var(--bg-2);
+    border: 1px solid var(--border-2);
+    border-radius: var(--radius-lg);
+
+    padding: 24px;
+
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateY(14px) scale(0.96);
+    transform-origin: bottom right;
+
+    transition:
+        opacity 0.25s var(--ease-out),
+        transform 0.25s var(--ease-out);
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--bg-2) transparent;
+}
+
+.privacy-popup.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.privacy-popup * {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.privacy-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    background: var(--surface);
+    border: 1px solid var(--border-2);
+    color: var(--text-2);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.privacy-close:hover {
+    color: var(--text);
+    border-color: var(--text);
+}
+
+.privacy-popup-header {
+    padding-right: 44px;
+    margin-bottom: 20px;
+}
+
+.privacy-popup-header .section-label {
+    margin-bottom: 14px;
+    font-size: 0.62rem;
+    padding: 5px 11px;
+}
+
+.privacy-popup-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.privacy-popup-header p {
+    font-size: 0.86rem;
+    color: var(--text-2);
+    line-height: 1.65;
+}
+
+.privacy-popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.privacy-item {
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+}
+
+.privacy-item:last-child {
+    padding-bottom: 0;
+}
+
+.privacy-item h4 {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.35;
+}
+
+.privacy-item p {
+    font-size: 0.82rem;
+    color: var(--text-2);
+    line-height: 1.7;
+    margin: 0;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+.privacy-item strong {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+body.privacy-open {
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .privacy-popup {
+        right: 16px;
+        left: 16px;
+        bottom: 20px;
+        width: auto;
+        max-height: calc(100vh - 40px);
+        padding: 22px;
+        border-radius: var(--radius-lg);
+    }
+
+    .privacy-popup-header h3 {
+        font-size: 1.3rem;
+    }
 }
 
 /* ============================================

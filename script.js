@@ -741,4 +741,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ── PRIVACY POLICY POPUP ──
+    const privacyTrigger = document.getElementById('privacyTrigger');
+    const privacyPopup = document.getElementById('privacyPopup');
+    const privacyOverlay = document.getElementById('privacyOverlay');
+    const privacyClose = document.getElementById('privacyClose');
+
+    function openPrivacyPopup() {
+        if (!privacyPopup || !privacyOverlay) return;
+
+        privacyPopup.classList.add('active');
+        privacyOverlay.classList.add('active');
+        document.body.classList.add('privacy-open');
+    }
+
+    function closePrivacyPopup() {
+        if (!privacyPopup || !privacyOverlay) return;
+
+        privacyPopup.classList.remove('active');
+        privacyOverlay.classList.remove('active');
+        document.body.classList.remove('privacy-open');
+    }
+
+    if (privacyTrigger) {
+        privacyTrigger.addEventListener('click', openPrivacyPopup);
+    }
+
+    if (privacyClose) {
+        privacyClose.addEventListener('click', closePrivacyPopup);
+    }
+
+    if (privacyOverlay) {
+        privacyOverlay.addEventListener('click', closePrivacyPopup);
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            closePrivacyPopup();
+        }
+    });
+
 });

@@ -2191,11 +2191,71 @@
                     by Sadan Ahmad.
                 </p>
                 <div class="footer-links">
-                    <a href="#hero">Privacy Policy</a>
+                    <button type="button" class="privacy-trigger" id="privacyTrigger">
+                        Privacy Policy
+                    </button>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- PRIVACY POLICY POPUP -->
+    <div class="privacy-overlay" id="privacyOverlay"></div>
+
+    <div class="privacy-popup" id="privacyPopup" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+        <button type="button" class="privacy-close" id="privacyClose" aria-label="Close privacy policy">
+            ✕
+        </button>
+
+        <div class="privacy-popup-header">
+            <h3 id="privacyTitle">Privacy Policy</h3>
+            <p>
+                Simple and transparent information about how your project details are handled.
+            </p>
+        </div>
+
+        <div class="privacy-popup-content">
+            <div class="privacy-item">
+                <h4>Information I Collect</h4>
+                <p>
+                    When you contact me, I may collect your name, email, phone number, project details,
+                    selected services, budget range, and any files you choose to share.
+                </p>
+            </div>
+
+            <div class="privacy-item">
+                <h4>How I Use Your Details</h4>
+                <p>
+                    Your information is only used to understand your project, respond to your inquiry,
+                    prepare proposals, and provide web design, development, or automation services.
+                </p>
+            </div>
+
+            <div class="privacy-item">
+                <h4>Data Protection</h4>
+                <p>
+                    I do not sell, rent, or share your personal details with third parties. Your project
+                    information is kept confidential and used only for professional communication.
+                </p>
+            </div>
+
+            <div class="privacy-item">
+                <h4>Uploaded Files</h4>
+                <p>
+                    Any file you attach is used only to review your project requirements. Files are not
+                    publicly shared or reused without your permission.
+                </p>
+            </div>
+
+            <div class="privacy-item">
+                <h4>Contact</h4>
+                <p>
+                    For any privacy-related questions, you can contact me directly at
+                    <strong>hello@sadanahmad.com</strong>.
+                </p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
