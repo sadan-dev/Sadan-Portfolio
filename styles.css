@@ -296,26 +296,6 @@ button {
 }
 
 /* NAV COMBO — Badge + Button */
-.nav-combo {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 100px;
-    padding: 0px 0px 0px 10px;
-    gap: 8px;
-}
-
-.nav-combo-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.8rem;
-    font-family: var(--font-body);
-    font-weight: 400;
-    color: var(--text);
-    white-space: nowrap;
-}
 
 .nav-combo-btn {
     position: relative;
@@ -531,12 +511,6 @@ button {
     background: var(--accent);
     color: #080808;
 }
-
-/* .btn-primary:hover {
-    background: #d4ff55;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px var(--accent-glow);
-} */
 
 .btn-ghost {
     color: var(--text);
@@ -1673,7 +1647,7 @@ button {
     border-radius: 100px;
     background: var(--surface);
     color: var(--accent);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-2);
     letter-spacing: 0.02em;
 }
 
@@ -1691,7 +1665,7 @@ button {
     border-radius: 100px;
     background: var(--surface);
     color: var(--text-2);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-2);
     letter-spacing: 0.02em;
 }
 
@@ -2232,7 +2206,7 @@ button {
 /* ── SERVICE POPOVER ── */
 .service-popover {
     position: fixed;
-    width: 300px;
+    width: 375px;
     background: var(--bg-2);
     border: 1px solid var(--border-2);
     border-radius: var(--radius-lg);
@@ -2260,6 +2234,7 @@ button {
     padding: 25px;
     background: var(--surface);
     border-radius: var(--radius-lg);
+    border-bottom: 1px solid var(--border-2);
 }
 
 .popover-header-headings {
@@ -2283,7 +2258,7 @@ button {
 
 .popover-header p {
     font-size: 0.75rem;
-    color: var(--text-3);
+    color: var(--text-2);
     font-weight: 500;
     font-family: var(--font-display);
     line-height: 1.4;
@@ -2292,7 +2267,7 @@ button {
 .popover-desc {
     font-size: 0.82rem;
     color: var(--text);
-    font-weight: 500;
+    font-weight: 400;
     font-family: var(--font-body);
     line-height: 1.65;
     margin-bottom: 16px;
@@ -2473,7 +2448,6 @@ button {
 }
 
 .pricing-features li em {
-    font-style: normal;
     color: var(--text-3);
 }
 
@@ -2505,63 +2479,45 @@ button {
     transition: transform 0.2s var(--ease-out);
 }
 
+.pricing-cta-btn--outline svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    transition: transform 0.2s var(--ease-out);
+}
+
 .pricing-cta-btn:hover {
     border-color: var(--accent);
 }
 
-/* Discovey Call Button (left col) */
-.pricing-cta-btn--outline {
-    font-weight: 600;
-    padding: 12px 20px;
-    font-family: var(--font-display);
-}
-
-/* Ghost — outlined */
-.pricing-cta-btn--ghost {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: 1px solid var(--border-2);
-    color: var(--text);
-    font-family: var(--font-display);
-    font-weight: 500;
-    width: auto;
-}
-
-.pricing-cta-btn--ghost:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-2px);
+.pricing-cta-btn--outline:hover {
+    border-color: var(--text);
 }
 
 /* Outline small — for dual buttons */
 .pricing-cta-btn--outline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 100px;
+    /* full pill — exactly like Vercel */
+    font-size: 0.875rem;
     background: var(--text);
+    color: var(--text-4);
     font-weight: 600;
     font-family: var(--font-display);
-    gap: 12px;
-    border: none;
-    color: var(--text-4);
-    justify-content: center;
-    padding: 12px 20px;
-    flex-shrink: 0;
-    width: auto;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s var(--ease-out),
+        background 0.2s, border-color 0.2s;
+    white-space: nowrap;
 }
 
 .pricing-cta-btn--outline:hover {
     color: var(--text-4);
     background: rgba(240, 237, 232, 0.8);
-}
-
-/* Dual buttons (Enterprise col) */
-.pricing-dual-btns {
-    display: flex;
-    gap: 10px;
-}
-
-.pricing-dual-btns .pricing-cta-btn--ghost {
-    flex: 1;
 }
 
 /* ── RESPONSIVE ── */
@@ -2598,10 +2554,6 @@ button {
 
     .pricing-col-footer {
         padding: 0 24px 28px;
-    }
-
-    .pricing-dual-btns {
-        flex-direction: column;
     }
 
     .pricing-cta-btn--outline {
@@ -4343,7 +4295,6 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 7px;
     padding: 11px 14px;
     width: 180px;
     border-radius: 100px;
@@ -4354,29 +4305,24 @@ button {
     white-space: nowrap;
 }
 
-.profile-btn svg {
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-}
-
 .profile-btn--primary {
     background: var(--accent);
     color: #080808;
 }
 
-.profile-btn--ghost {
-    background: transparent;
+.whatsapp-btn-profile {
     color: var(--text);
+    font-weight: 500;
     font-size: 0.85rem;
-    font-family: var(--font-display);
     border: 1px solid var(--border-2);
+    background: rgba(8, 8, 8, 0.5);
+    backdrop-filter: blur(30px);
 }
 
-.profile-btn--ghost:hover {
-    border-color: #25d366;
-    color: #25d366;
-    transform: translateY(-1px);
+.whatsapp-btn-profile:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
 }
 
 /* Email row */
@@ -4386,7 +4332,7 @@ button {
     justify-content: space-between;
     gap: 10px;
     padding: 10px 14px;
-    background: var(--surface);
+    background: var(--bg-3);
     border: 1px solid var(--border);
     border-radius: 100px;
     position: relative;
@@ -4515,6 +4461,12 @@ button {
     width: 100%;
 }
 
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border: 1px solid var(--border-2);
+}
+
 .form-group input::placeholder,
 .form-group textarea::placeholder {
     color: var(--text-3);
@@ -4538,6 +4490,83 @@ button {
 .form-group select option {
     background: var(--bg-3);
     color: var(--text);
+}
+
+/* Pricing tier options inside service dropdown */
+.cs-option-tier {
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.cs-option-tier span {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cs-option-tier strong {
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+.cs-option-tier small {
+    font-size: 0.72rem;
+    color: var(--text-3);
+    line-height: 1.3;
+}
+
+.cs-option-tier em {
+    font-style: normal;
+    font-size: 0.75rem;
+    color: var(--accent);
+    padding: 4px 8px;
+    border-radius: 100px;
+    background: var(--accent-dim);
+    white-space: nowrap;
+}
+
+.cs-option-tier:hover {
+    background: rgba(200, 245, 66, 0.06);
+}
+
+.cs-option-tier.selected {
+    background: rgba(200, 245, 66, 0.08);
+}
+
+/* Budget locked state */
+.custom-select.is-locked .cs-trigger {
+    cursor: not-allowed;
+}
+
+.custom-select.is-locked .cs-placeholder {
+    color: var(--text);
+}
+
+.custom-select.is-locked .cs-arrow {
+    opacity: 0;
+}
+
+.custom-select.is-locked .cs-trigger::after {
+    content: 'Locked by service';
+    font-size: 0.65rem;
+    color: var(--text-2);
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+@media (max-width: 576px) {
+    .custom-select.is-locked .cs-trigger::after {
+        display: none;
+    }
+
+    .cs-option-tier {
+        padding: 13px 14px;
+    }
 }
 
 /* ── FORM ACTIONS ── */
@@ -4580,13 +4609,14 @@ button {
 .attach-remove-btn {
     display: none;
     /* hidden until file selected */
-    width: 16px;
-    height: 16px;
+    width: 17px;
+    height: 17px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
+    background: grey;
     border: none;
-    color: var(--text-2);
-    font-size: 0.6rem;
+    color: var(--text-4);
+    font-size: 0.8rem;
+    font-weight: 700;
     cursor: pointer;
     align-items: center;
     justify-content: center;

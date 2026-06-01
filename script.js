@@ -617,7 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         e.stopPropagation();    // prevent label from opening file picker
         fileInput.value = '';   // clear file input
-        attachLabel.textContent = 'Attach Files';
+        attachLabel.textContent = 'Attach File in Any Format'; // reset label
         removeBtn.style.display = 'none'; // hide ×
     });
 
@@ -649,96 +649,223 @@ document.addEventListener('DOMContentLoaded', () => {
                     submitLabel.textContent = 'Send Message';
                     if (submitSvg) submitSvg.style.display = 'block';
                     contactForm.reset();
-                    if (attachLabel) attachLabel.textContent = 'Attach Files';
+                    if (attachLabel) attachLabel.textContent = 'Attach File in Any Format';
                 }, 3000);
             }, 1500);
         });
     }
 
-    // ── CUSTOM SELECT — Budget (single select) ──
+    // ─────────────────────────────────────────────
+    // CUSTOM SELECTS — Service + Budget
+    // Service: tiers are exclusive, individual services are multi-select
+    // Budget: auto-locks only when pricing tier is selected
+    // ─────────────────────────────────────────────
+
     initSingleSelect('budgetSelect', 'budgetPlaceholder', 'budgetValue');
-
-    // ── CUSTOM SELECT — Service (multi select) ──
-    initMultiSelect('serviceSelect', 'servicePlaceholder', 'serviceValue');
+    initServiceSelectWithTierLock('serviceSelect', 'servicePlaceholder', 'serviceValue');
 
 
+    // Budget dropdown — normal single select
     function initSingleSelect(wrapId, placeholderId, inputId) {
         const wrap = document.getElementById(wrapId);
         const placeholder = document.getElementById(placeholderId);
         const hiddenInput = document.getElementById(inputId);
-        if (!wrap) return;
+
+        if (!wrap || !placeholder || !hiddenInput) return;
 
         const trigger = wrap.querySelector('.cs-trigger');
-        const dropdown = wrap.querySelector('.cs-dropdown');
         const options = wrap.querySelectorAll('.cs-option');
 
-        trigger.addEventListener('click', () => wrap.classList.toggle('open'));
+        if (!trigger || !options.length) return;
 
-        options.forEach(opt => {
-            opt.addEventListener('click', () => {
-                options.forEach(o => o.classList.remove('selected'));
-                opt.classList.add('selected');
-                placeholder.textContent = opt.dataset.value;
-                placeholder.classList.add('has-value');
-                hiddenInput.value = opt.dataset.value;
+        trigger.addEventListener('click', () => {
+            // Locked budget cannot be opened manually
+            if (wrap.classList.contains('is-locked')) return;
+
+            wrap.classList.toggle('open');
+        });
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                // Locked budget cannot be changed manually
+                if (wrap.classList.contains('is-locked')) return;
+
+                const value = option.dataset.value;
+
+                setSelectValue(wrap, placeholder, hiddenInput, value);
                 wrap.classList.remove('open');
             });
         });
 
-        // Close on outside click
         document.addEventListener('click', e => {
-            if (!wrap.contains(e.target)) wrap.classList.remove('open');
+            if (!wrap.contains(e.target)) {
+                wrap.classList.remove('open');
+            }
         });
     }
 
 
-    function initMultiSelect(wrapId, placeholderId, inputId) {
-        const wrap = document.getElementById(wrapId);
-        const placeholder = document.getElementById(placeholderId);
-        const hiddenInput = document.getElementById(inputId);
-        if (!wrap) return;
+    // Service dropdown — tiers exclusive, individual services multi-select
+    function initServiceSelectWithTierLock(wrapId, placeholderId, inputId) {
+        const serviceWrap = document.getElementById(wrapId);
+        const servicePlaceholder = document.getElementById(placeholderId);
+        const serviceInput = document.getElementById(inputId);
 
-        const trigger = wrap.querySelector('.cs-trigger');
-        const options = wrap.querySelectorAll('.cs-option');
-        let selected = [];
+        const budgetWrap = document.getElementById('budgetSelect');
+        const budgetPlaceholder = document.getElementById('budgetPlaceholder');
+        const budgetInput = document.getElementById('budgetValue');
 
-        trigger.addEventListener('click', () => wrap.classList.toggle('open'));
+        if (!serviceWrap || !servicePlaceholder || !serviceInput) return;
 
-        options.forEach(opt => {
-            opt.addEventListener('click', () => {
-                const val = opt.dataset.value;
+        const serviceTrigger = serviceWrap.querySelector('.cs-trigger');
+        const serviceOptions = serviceWrap.querySelectorAll('.cs-option');
 
-                if (selected.includes(val)) {
-                    // Deselect
-                    selected = selected.filter(v => v !== val);
-                    opt.classList.remove('selected');
-                } else {
-                    // Select
-                    selected.push(val);
-                    opt.classList.add('selected');
+        if (!serviceTrigger || !serviceOptions.length) return;
+
+        const tierBudgetMap = {
+            authority: '$1,000 – $2,500',
+            commerce: '$2,500 – $5,000',
+            architect: '$5,000+'
+        };
+
+        let selectedServices = [];
+        let selectedTier = null;
+
+        serviceTrigger.addEventListener('click', () => {
+            serviceWrap.classList.toggle('open');
+        });
+
+        serviceOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const value = option.dataset.value;
+                const tier = option.dataset.tier || null;
+                const isAlreadySelected = option.classList.contains('selected');
+
+                // CASE 1: User clicked a pricing tier
+                if (tier) {
+                    // Clear all previous selected services/tier first
+                    clearAllServiceSelections();
+
+                    // If same tier clicked again, deselect it
+                    if (isAlreadySelected && selectedTier === tier) {
+                        selectedTier = null;
+                        selectedServices = [];
+                        resetServicePlaceholder();
+                        resetAndUnlockBudget();
+                        serviceWrap.classList.remove('open');
+                        return;
+                    }
+
+                    // Select only this tier
+                    selectedTier = tier;
+                    selectedServices = [value];
+
+                    option.classList.add('selected');
+                    servicePlaceholder.textContent = value;
+                    servicePlaceholder.classList.add('has-value');
+                    serviceInput.value = value;
+
+                    // Auto-set and lock budget
+                    setAndLockBudget(tierBudgetMap[tier]);
+
+                    serviceWrap.classList.remove('open');
+                    return;
                 }
 
-                // Update placeholder text
-                if (selected.length === 0) {
-                    placeholder.textContent = 'Select a service';
-                    placeholder.classList.remove('has-value');
-                } else if (selected.length === 1) {
-                    placeholder.textContent = selected[0];
-                    placeholder.classList.add('has-value');
-                } else {
-                    // "WordPress Development + 2" format
-                    placeholder.textContent = `${selected[0]} + ${selected.length - 1}`;
-                    placeholder.classList.add('has-value');
+                // CASE 2: User clicked an individual service
+
+                // If a tier was selected before, remove it first
+                if (selectedTier) {
+                    clearAllServiceSelections();
+                    selectedTier = null;
+                    selectedServices = [];
+                    resetAndUnlockBudget();
                 }
 
-                hiddenInput.value = selected.join(', ');
-                // Note: dropdown stays open for multi-select
+                // Toggle individual service
+                if (selectedServices.includes(value)) {
+                    selectedServices = selectedServices.filter(item => item !== value);
+                    option.classList.remove('selected');
+                } else {
+                    selectedServices.push(value);
+                    option.classList.add('selected');
+                }
+
+                updateServicePlaceholder();
+                serviceInput.value = selectedServices.join(', ');
+
+                // Dropdown stays open for multi-select individual services
             });
         });
 
+        function clearAllServiceSelections() {
+            serviceOptions.forEach(option => {
+                option.classList.remove('selected');
+            });
+        }
+
+        function updateServicePlaceholder() {
+            if (selectedServices.length === 0) {
+                resetServicePlaceholder();
+            } else if (selectedServices.length === 1) {
+                servicePlaceholder.textContent = selectedServices[0];
+                servicePlaceholder.classList.add('has-value');
+            } else {
+                servicePlaceholder.textContent = `${selectedServices[0]} + ${selectedServices.length - 1}`;
+                servicePlaceholder.classList.add('has-value');
+            }
+        }
+
+        function resetServicePlaceholder() {
+            servicePlaceholder.textContent = 'Select a service';
+            servicePlaceholder.classList.remove('has-value');
+            serviceInput.value = '';
+        }
+
+        function setAndLockBudget(value) {
+            if (!budgetWrap || !budgetPlaceholder || !budgetInput || !value) return;
+
+            setSelectValue(budgetWrap, budgetPlaceholder, budgetInput, value);
+
+            budgetWrap.classList.add('is-locked');
+            budgetWrap.classList.remove('open');
+        }
+
+        function resetAndUnlockBudget() {
+            if (!budgetWrap || !budgetPlaceholder || !budgetInput) return;
+
+            budgetWrap.classList.remove('is-locked');
+            budgetWrap.classList.remove('open');
+
+            const budgetOptions = budgetWrap.querySelectorAll('.cs-option');
+            budgetOptions.forEach(option => option.classList.remove('selected'));
+
+            budgetPlaceholder.textContent = 'Select budget';
+            budgetPlaceholder.classList.remove('has-value');
+            budgetInput.value = '';
+        }
+
         document.addEventListener('click', e => {
-            if (!wrap.contains(e.target)) wrap.classList.remove('open');
+            if (!serviceWrap.contains(e.target)) {
+                serviceWrap.classList.remove('open');
+            }
         });
+    }
+
+
+    // Reusable helper — sets single dropdown value
+    function setSelectValue(wrap, placeholder, hiddenInput, value) {
+        if (!wrap || !placeholder || !hiddenInput || !value) return;
+
+        const options = wrap.querySelectorAll('.cs-option');
+
+        options.forEach(option => {
+            option.classList.toggle('selected', option.dataset.value === value);
+        });
+
+        placeholder.textContent = value;
+        placeholder.classList.add('has-value');
+        hiddenInput.value = value;
     }
 
     // ── PRIVACY POLICY POPUP ──
