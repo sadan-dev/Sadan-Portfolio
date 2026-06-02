@@ -140,19 +140,62 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     function animateCounters() {
         const counters = document.querySelectorAll('.stat-num');
-        counters.forEach(counter => {
+
+        if (!counters.length) return;
+
+        const startCounter = counter => {
+            if (counter.dataset.animated === 'true') return;
+
+            counter.dataset.animated = 'true';
+
             const target = parseFloat(counter.dataset.count);
-            const isDecimal = target % 1 !== 0;
-            let current = 0;
-            const step = target / 60;
-            const interval = setInterval(() => {
-                current += step;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(interval);
+            const prefix = counter.dataset.prefix || '';
+            const suffix = counter.dataset.suffix || '';
+
+            if (Number.isNaN(target)) return;
+
+            const duration = 2800;
+            const startTime = performance.now();
+
+            const updateCounter = currentTime => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                const easedProgress = 1 - Math.pow(1 - progress, 3);
+                let currentValue = target * easedProgress;
+
+                if (target % 1 !== 0) {
+                    currentValue = currentValue.toFixed(1);
+                } else {
+                    currentValue = Math.floor(currentValue);
                 }
-                counter.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
-            }, 25);
+
+                counter.textContent = `${prefix}${currentValue}${suffix}`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    const finalValue = target % 1 !== 0 ? target.toFixed(1) : target;
+                    counter.textContent = `${prefix}${finalValue}${suffix}`;
+                }
+            };
+
+            requestAnimationFrame(updateCounter);
+        };
+
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.25
+        });
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
         });
     }
 
@@ -296,25 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { passive: true });
-
-
-    // // ============================================
-    // // MAGNETIC BUTTON EFFECT
-    // // ============================================
-    // const magnetBtns = document.querySelectorAll('.btn-primary, .nav-cta');
-
-    // magnetBtns.forEach(btn => {
-    //     btn.addEventListener('mousemove', e => {
-    //         const rect = btn.getBoundingClientRect();
-    //         const x = e.clientX - rect.left - rect.width / 2;
-    //         const y = e.clientY - rect.top - rect.height / 2;
-    //         btn.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
-    //     });
-
-    //     btn.addEventListener('mouseleave', () => {
-    //         btn.style.transform = '';
-    //     });
-    // });
 
     // ============================================
     // DIRECTIONAL FILL BUTTON - DETECTS MOUSE ENTRY DIRECTION AND ANIMATES FILL FROM THAT DIRECTION
@@ -867,6 +891,87 @@ document.addEventListener('DOMContentLoaded', () => {
         placeholder.classList.add('has-value');
         hiddenInput.value = value;
     }
+
+    // ─────────────────────────────────────────────
+    // PACKAGE CTA → CONTACT FORM PREFILL
+    // Only Authority + Commerce buttons should have .package-prefill-btn
+    // ─────────────────────────────────────────────
+
+    function initPackagePrefillButtons() {
+        const packageButtons = document.querySelectorAll('.package-prefill-btn');
+
+        if (!packageButtons.length) return;
+
+        packageButtons.forEach(button => {
+            button.addEventListener('click', e => {
+                e.preventDefault();
+
+                const packageName = button.dataset.package;
+                const budgetValue = button.dataset.budget;
+                const contactSection = document.getElementById('contact');
+
+                if (!packageName || !budgetValue || !contactSection) return;
+
+                prefillPackageInContactForm(packageName, budgetValue);
+
+                contactSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    }
+
+    function prefillPackageInContactForm(packageName, budgetValue) {
+        const serviceWrap = document.getElementById('serviceSelect');
+        const servicePlaceholder = document.getElementById('servicePlaceholder');
+        const serviceInput = document.getElementById('serviceValue');
+
+        const budgetWrap = document.getElementById('budgetSelect');
+        const budgetPlaceholder = document.getElementById('budgetPlaceholder');
+        const budgetInput = document.getElementById('budgetValue');
+
+        if (!serviceWrap || !servicePlaceholder || !serviceInput) return;
+        if (!budgetWrap || !budgetPlaceholder || !budgetInput) return;
+
+        // Reset service options first
+        const serviceOptions = serviceWrap.querySelectorAll('.cs-option');
+        serviceOptions.forEach(option => {
+            option.classList.remove('selected');
+        });
+
+        // Select matching package option in services dropdown
+        const matchingServiceOption = serviceWrap.querySelector(
+            `.cs-option[data-value="${packageName}"]`
+        );
+
+        if (matchingServiceOption) {
+            matchingServiceOption.classList.add('selected');
+        }
+
+        servicePlaceholder.textContent = packageName;
+        servicePlaceholder.classList.add('has-value');
+        serviceInput.value = packageName;
+
+        // Set matching budget option
+        const budgetOptions = budgetWrap.querySelectorAll('.cs-option');
+        budgetOptions.forEach(option => {
+            option.classList.toggle('selected', option.dataset.value === budgetValue);
+        });
+
+        budgetPlaceholder.textContent = budgetValue;
+        budgetPlaceholder.classList.add('has-value');
+        budgetInput.value = budgetValue;
+
+        // Lock budget, same as when tier is selected manually
+        budgetWrap.classList.add('is-locked');
+
+        // Close dropdowns if any open
+        serviceWrap.classList.remove('open');
+        budgetWrap.classList.remove('open');
+    }
+
+    initPackagePrefillButtons();
 
     // ── PRIVACY POLICY POPUP ──
     const privacyTrigger = document.getElementById('privacyTrigger');
