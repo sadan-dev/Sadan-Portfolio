@@ -299,45 +299,107 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ─────────────────────────────────────────────
-    // MOBILE SERVICE BOTTOM SHEET
-    // Opens only on mobile when a service row is tapped
+    // MOBILE SERVICE BOTTOM SHEET — FINAL VERSION
+    // Does not depend on .service-popover HTML
     // ─────────────────────────────────────────────
 
     function initMobileServiceSheet() {
         const serviceRows = document.querySelectorAll('.service-row');
+
         const overlay = document.getElementById('mobileServiceOverlay');
         const sheet = document.getElementById('mobileServiceSheet');
         const closeBtn = document.getElementById('mobileServiceClose');
+
         const titleEl = document.getElementById('mobileServiceTitle');
         const subtitleEl = document.getElementById('mobileServiceSubtitle');
         const contentEl = document.getElementById('mobileServiceContent');
 
-        if (!serviceRows.length || !overlay || !sheet || !closeBtn || !titleEl || !subtitleEl || !contentEl) return;
+        if (!serviceRows.length || !overlay || !sheet || !closeBtn || !titleEl || !subtitleEl || !contentEl) {
+            console.warn('Mobile service sheet elements are missing.');
+            return;
+        }
+
+        const servicesData = {
+            'No-Code Development': {
+                title: 'No-Code Development',
+                subtitle: 'Launch faster. Own it fully',
+                desc: 'We build powerful, fully custom websites on WordPress and Webflow, without the complexity of custom code. You get a site that looks bespoke, loads fast, and that you can manage yourself without touching a single line of code.',
+                benefits: [
+                    'Live in 7–14 days, not months',
+                    'You own and manage everything after handoff',
+                    'Built for speed, SEO, and real conversions'
+                ]
+            },
+
+            'Full-Stack Development': {
+                title: 'Full-Stack Development',
+                subtitle: 'Custom Web Applications',
+                desc: 'For businesses that have outgrown off-the-shelf solutions. We build fully custom web applications, portals, dashboards, and platforms, designed exactly around how your business works, not the other way around.',
+                benefits: [
+                    'Built exactly to your business logic',
+                    'Scales as your product or team grows',
+                    'Full ownership — no platform lock-in'
+                ]
+            },
+
+            'Website Design': {
+                title: 'Website Design',
+                subtitle: 'Design that sells, not just impresses',
+                desc: 'We design websites in Figma that look world-class and are built around your customers journey. Every layout, colour, and element is chosen intentionally to build trust, reduce friction, and move visitors toward taking action.',
+                benefits: [
+                    'Full Figma prototype before a line of code',
+                    'Designed around conversions, not just aesthetics',
+                    'Consistent design system your team can build on'
+                ]
+            },
+
+            'Mobile App Design': {
+                title: 'Mobile App Design',
+                subtitle: 'Apps people actually enjoy using',
+                desc: 'We design clean, intuitive mobile app interfaces in Figma — from early wireframes all the way to developer-ready UI. Whether youre pitching to investors or handing off to a dev team, we make sure your app looks and feels exactly right.',
+                benefits: [
+                    'Wire-frames, flows, and full UI',
+                    'Developer-ready files, your team can build from day one',
+                    'Consistent visual system for a polished brand experience'
+                ]
+            },
+
+            'Business Automation': {
+                title: 'Business Automation',
+                subtitle: 'Save Hours, Save Money',
+                desc: 'We connect your tools and build smart automation workflows using Make, Zapier, and n8n, so your business runs smoother without adding more people or more hours. From lead capture to client onboarding, we automate the repetitive stuff so you can focus on what matters.',
+                benefits: [
+                    'Save 20–40 hours of manual work every single week',
+                    'Fewer errors, faster response times, happier clients',
+                    'ROI usually achieved within the first 30 days'
+                ]
+            }
+        };
 
         const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
 
         serviceRows.forEach(row => {
-            row.addEventListener('click', () => {
+            row.addEventListener('click', event => {
                 if (!isMobile()) return;
 
-                const popover = row.querySelector('.service-popover');
-                if (!popover) return;
+                event.preventDefault();
 
-                const title = popover.querySelector('.popover-header strong')?.textContent || 'Service Details';
-                const subtitle = popover.querySelector('.popover-header p')?.textContent || '';
-                const desc = popover.querySelector('.popover-desc')?.textContent || '';
-                const benefits = [...popover.querySelectorAll('.popover-benefit')]
-                    .map(item => item.textContent.trim())
-                    .filter(Boolean);
+                const serviceKey = row.dataset.service;
+                const data = servicesData[serviceKey];
 
-                titleEl.textContent = title;
-                subtitleEl.textContent = subtitle;
+                if (!data) {
+                    console.warn('No mobile sheet data found for:', serviceKey);
+                    return;
+                }
+
+                titleEl.textContent = data.title;
+                subtitleEl.textContent = data.subtitle;
 
                 contentEl.innerHTML = `
-                <p class="mobile-service-desc">${desc}</p>
+                <p class="mobile-service-desc">${data.desc}</p>
                 <div class="mobile-service-benefits">
-                    ${benefits.map(benefit => `
-                        <div class="mobile-service-benefit">${benefit}</div>
+                    ${data.benefits.map(item => `
+                        <div class="mobile-service-benefit">${item}</div>
                     `).join('')}
                 </div>
             `;
@@ -361,8 +423,8 @@ document.addEventListener('DOMContentLoaded', () => {
         closeBtn.addEventListener('click', closeMobileServiceSheet);
         overlay.addEventListener('click', closeMobileServiceSheet);
 
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') {
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
                 closeMobileServiceSheet();
             }
         });
