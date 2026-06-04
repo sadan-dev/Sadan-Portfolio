@@ -5665,15 +5665,6 @@ body.privacy-open {
         opacity: 1;
     }
 
-    .mobile-service-handle {
-        width: 46px;
-        height: 4px;
-        border-radius: 100px;
-        background: var(--border-2);
-        margin: 9px auto 6px;
-        flex-shrink: 0;
-    }
-
     .mobile-service-header {
         display: flex;
         align-items: flex-start;
