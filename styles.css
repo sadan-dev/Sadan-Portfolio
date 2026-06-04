@@ -4799,6 +4799,7 @@ button {
 
     .contact-right {
         border: 1px solid var(--border-2);
+        border-radius: 25px;
     }
 
     .contact-section {
@@ -5510,14 +5511,14 @@ body.privacy-open {
         grid-column: 1;
         grid-row: 1;
         justify-self: start;
-        margin-left: 25px;
+        margin-left: 2px;
     }
 
     .footer-links {
         grid-column: 2;
         grid-row: 1;
         justify-self: end;
-        margin-right: 25px;
+        margin-right: 2px;
     }
 
     .footer-copy {
