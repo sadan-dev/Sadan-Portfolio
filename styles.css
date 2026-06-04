@@ -2132,13 +2132,35 @@ button {
    ============================================ */
 
 @media (max-width: 768px) {
+
+    .project-view-btn {
+        width: fit-content;
+        max-width: fit-content;
+        min-width: auto;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 24px;
+        margin: 0 auto;
+        white-space: nowrap;
+    }
+
+    .btn-ghost {
+        border: 1px solid var(--border-2);
+    }
+
+    .section-title {
+        font-size: clamp(2.7rem, 5vw, 2.7rem);
+        font-weight: 600;
+    }
+
     .services .container {
         padding-left: 24px;
         padding-right: 24px;
     }
 
     .service-row-inner {
-        padding: 24px 0 24px 30px;
+        padding: 24px 0 24px 5px;
     }
 
     .service-left {
@@ -2146,6 +2168,31 @@ button {
     }
 
     .service-dash {
+        display: none;
+    }
+
+    .profile-btn {
+        padding: 7px 14px;
+        font-size: 0.8rem;
+        width: fit-content;
+        max-width: fit-content;
+        min-width: auto;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 24px;
+        margin: 0 auto;
+        white-space: nowrap;
+    }
+
+    .whatsapp-btn-profile {
+        padding: 7px 0 7px 0;
+        font-size: 0.8rem;
+        width: 32px;
+    }
+
+    .client-logos-row>*:nth-child(4),
+    .client-logos-row>*:nth-child(5) {
         display: none;
     }
 }
@@ -2851,6 +2898,11 @@ button {
     /* Feature column slightly narrower */
     .cmp-th--feature {
         width: 22%;
+        font-size: 0.65rem;
+    }
+
+    .cmp-yes-text {
+        font-size: 0.7rem;
     }
 }
 
@@ -4735,7 +4787,7 @@ button {
     }
 
     .profile-card {
-        max-width: 420px;
+        width: 320px;
     }
 }
 
@@ -4754,7 +4806,7 @@ button {
     }
 
     .contact-form-wrap {
-        padding: 28px 20px;
+        padding: 2px 2px;
     }
 
     .form-row {
@@ -4770,10 +4822,6 @@ button {
     .form-submit-btn {
         width: 100%;
         justify-content: center;
-    }
-
-    .profile-card {
-        max-width: 100%;
     }
 }
 
@@ -5380,13 +5428,17 @@ body.privacy-open {
         gap: 48px;
     }
 
+    .icon-peace {
+        display: none;
+    }
+
     .about-left {
         position: static;
     }
 
     .about-img-placeholder {
         width: 200px;
-        height: 240px;
+        height: 230px;
     }
 
     .skills-grid {
@@ -5476,12 +5528,6 @@ body.privacy-open {
     }
 }
 
-@media (max-width: 576px) {
-    .client-logos-row>*:nth-child(5) {
-        display: none;
-    }
-}
-
 /* ============================================
    HERO CTA — MOBILE RESPONSIVE
    ============================================ */
@@ -5536,7 +5582,8 @@ body.privacy-open {
     }
 
     .hero-actions {
-        flex-direction: column;
+        display: flex;
+        flex-direction: row;
         align-items: center;
     }
 
@@ -5554,5 +5601,190 @@ body.privacy-open {
     .cursor,
     .cursor-follower {
         display: none;
+    }
+}
+
+/* ============================================
+   MOBILE SERVICE BOTTOM SHEET
+   ============================================ */
+
+.mobile-service-overlay,
+.mobile-service-sheet {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    /* Hide desktop cursor-following popover on mobile */
+    .service-popover {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    .mobile-service-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(8, 8, 8, 0.65);
+        z-index: 9996;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.28s var(--ease-out);
+    }
+
+    .mobile-service-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .mobile-service-sheet {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: min(88vh, 720px);
+        background: var(--bg-2);
+        border-top: 1px solid var(--border-2);
+        border-radius: 24px 24px 0 0;
+        z-index: 9997;
+        transform: translateY(105%);
+        opacity: 0;
+        pointer-events: none;
+        transition:
+            transform 0.35s var(--ease-out),
+            opacity 0.25s var(--ease-out);
+        overflow: hidden;
+        box-shadow: 0 -24px 80px rgba(0, 0, 0, 0.55);
+    }
+
+    .mobile-service-sheet.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .mobile-service-handle {
+        width: 46px;
+        height: 4px;
+        border-radius: 100px;
+        background: var(--border-2);
+        margin: 9px auto 6px;
+        flex-shrink: 0;
+    }
+
+    .mobile-service-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 18px 24px 20px;
+        border-bottom: 1px solid var(--border);
+        flex-shrink: 0;
+    }
+
+    .mobile-service-kicker {
+        display: inline-block;
+        font-family: var(--font-display);
+        font-size: 0.62rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 8px;
+    }
+
+    .mobile-service-header h3 {
+        font-family: var(--font-display);
+        font-size: 1.35rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        color: var(--text);
+        margin-bottom: 5px;
+    }
+
+    .mobile-service-header p {
+        font-size: 0.82rem;
+        color: var(--text-2);
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .mobile-service-close {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--surface);
+        border: 1px solid var(--border-2);
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+        transition: color 0.2s, border-color 0.2s;
+    }
+
+    .mobile-service-close:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+    }
+
+    .mobile-service-content {
+        padding: 24px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        flex: 1;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .mobile-service-content::-webkit-scrollbar {
+        display: none;
+    }
+
+    .mobile-service-desc {
+        font-size: 0.95rem;
+        color: var(--text);
+        line-height: 1.75;
+        margin-bottom: 24px;
+    }
+
+    .mobile-service-benefits {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .mobile-service-benefit {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 14px 16px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.025);
+        color: var(--text-2);
+        font-size: 0.86rem;
+        line-height: 1.55;
+    }
+
+    .mobile-service-benefit::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        margin-top: 7px;
+        flex-shrink: 0;
+    }
+
+    body.mobile-service-open {
+        overflow: hidden;
     }
 }

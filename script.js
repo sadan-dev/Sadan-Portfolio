@@ -298,25 +298,83 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ─────────────────────────────────────────────
+    // MOBILE SERVICE BOTTOM SHEET
+    // Opens only on mobile when a service row is tapped
+    // ─────────────────────────────────────────────
 
-    // ============================================
-    // SKILL BARS
-    // ============================================
-    function initSkillBars() {
-        const skillFills = document.querySelectorAll('.skill-fill');
+    function initMobileServiceSheet() {
+        const serviceRows = document.querySelectorAll('.service-row');
+        const overlay = document.getElementById('mobileServiceOverlay');
+        const sheet = document.getElementById('mobileServiceSheet');
+        const closeBtn = document.getElementById('mobileServiceClose');
+        const titleEl = document.getElementById('mobileServiceTitle');
+        const subtitleEl = document.getElementById('mobileServiceSubtitle');
+        const contentEl = document.getElementById('mobileServiceContent');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const width = entry.target.dataset.width;
-                    entry.target.style.width = width + '%';
-                    observer.unobserve(entry.target);
-                }
+        if (!serviceRows.length || !overlay || !sheet || !closeBtn || !titleEl || !subtitleEl || !contentEl) return;
+
+        const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+
+        serviceRows.forEach(row => {
+            row.addEventListener('click', () => {
+                if (!isMobile()) return;
+
+                const popover = row.querySelector('.service-popover');
+                if (!popover) return;
+
+                const title = popover.querySelector('.popover-header strong')?.textContent || 'Service Details';
+                const subtitle = popover.querySelector('.popover-header p')?.textContent || '';
+                const desc = popover.querySelector('.popover-desc')?.textContent || '';
+                const benefits = [...popover.querySelectorAll('.popover-benefit')]
+                    .map(item => item.textContent.trim())
+                    .filter(Boolean);
+
+                titleEl.textContent = title;
+                subtitleEl.textContent = subtitle;
+
+                contentEl.innerHTML = `
+                <p class="mobile-service-desc">${desc}</p>
+                <div class="mobile-service-benefits">
+                    ${benefits.map(benefit => `
+                        <div class="mobile-service-benefit">${benefit}</div>
+                    `).join('')}
+                </div>
+            `;
+
+                openMobileServiceSheet();
             });
-        }, { threshold: 0.3 });
+        });
 
-        skillFills.forEach(fill => observer.observe(fill));
+        function openMobileServiceSheet() {
+            overlay.classList.add('active');
+            sheet.classList.add('active');
+            document.body.classList.add('mobile-service-open');
+        }
+
+        function closeMobileServiceSheet() {
+            overlay.classList.remove('active');
+            sheet.classList.remove('active');
+            document.body.classList.remove('mobile-service-open');
+        }
+
+        closeBtn.addEventListener('click', closeMobileServiceSheet);
+        overlay.addEventListener('click', closeMobileServiceSheet);
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                closeMobileServiceSheet();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (!isMobile()) {
+                closeMobileServiceSheet();
+            }
+        });
     }
+
+    initMobileServiceSheet();
 
     // ============================================
     // ACTIVE NAV LINK on scroll

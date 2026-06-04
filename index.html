@@ -2428,12 +2428,12 @@
                     <img src="images/logix.svg" alt="Client Logo 1">
                 </div>
 
-                <div href="#" class="client-logo-item" aria-label="Client logo 2">
-                    <img src="images/caveman.svg" alt="Client Logo 2">
-                </div>
-
                 <div class="client-logo-placeholder" aria-label="Your logo placeholder">
                     <span>Your logo</span>
+                </div>
+
+                <div href="#" class="client-logo-item" aria-label="Client logo 2">
+                    <img src="images/caveman.svg" alt="Client Logo 2">
                 </div>
 
                 <div href="#" class="client-logo-item" aria-label="Client logo 4">
@@ -2522,6 +2522,28 @@
                 </p>
             </div>
         </div>
+    </div>
+
+    <!-- MOBILE SERVICES SHEET -->
+    <div class="mobile-service-overlay" id="mobileServiceOverlay"></div>
+
+    <div class="mobile-service-sheet" id="mobileServiceSheet" role="dialog" aria-modal="true">
+        <div class="mobile-service-handle"></div>
+
+        <div class="mobile-service-header">
+            <div>
+                <span class="mobile-service-kicker">Service</span>
+                <h3 id="mobileServiceTitle">Service Title</h3>
+                <p id="mobileServiceSubtitle">Service subtitle</p>
+            </div>
+
+            <button type="button" class="mobile-service-close" id="mobileServiceClose"
+                aria-label="Close service details">
+                ✕
+            </button>
+        </div>
+
+        <div class="mobile-service-content" id="mobileServiceContent"></div>
     </div>
 
     <script src="script.js"></script>
