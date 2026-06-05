@@ -2117,7 +2117,7 @@ button {
     width: 50px;
     height: 50px;
     color: var(--text);
-    transition: color 0.2s, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: color 0.5s, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
     flex-shrink: 0;
 }
 
@@ -2169,6 +2169,25 @@ button {
 
     .service-dash {
         display: none;
+    }
+
+    .service-name {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .service-right {
+        gap: 10px;
+    }
+
+    .service-tag {
+        font-size: 0.55rem;
+        padding: 4px 10px 4px 10px;
+    }
+
+    .service-arrow {
+        width: 25px;
+        height: 25px;
     }
 
     .profile-btn {
@@ -4186,7 +4205,28 @@ button {
     display: grid;
     grid-template-columns: 380px 1fr;
     gap: 25px;
-    align-items: start;
+    align-items: stretch;
+}
+
+.contact-inner {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    align-items: stretch !important;
+}
+
+.contact-left {
+    display: flex;
+    height: 100%;
+}
+
+.profile-card,
+.contact-form-wrap {
+    height: 100%;
+    min-height: 100%;
+}
+
+.profile-card {
+    flex: 1;
 }
 
 /* ════════════════════════════════
@@ -4462,7 +4502,7 @@ button {
     background: var(--bg-2);
     border: 1px solid var(--border);
     border-radius: 25px;
-    padding: 40px 40px 36px;
+    padding: 20px 27px 27px;
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -4476,7 +4516,7 @@ button {
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 17px;
+    gap: 27px;
 }
 
 .form-row {
@@ -5118,11 +5158,11 @@ button {
 .privacy-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(8, 8, 8, 0.75);
+    background: rgba(8, 8, 8, 0.65);
     z-index: 99;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.25s var(--ease-out);
+    transition: opacity 0.55s var(--ease-out);
 }
 
 .privacy-overlay.active {
@@ -5141,7 +5181,7 @@ button {
     border: 1px solid var(--border-2);
     border-radius: var(--radius-lg);
 
-    padding: 24px;
+    padding: 25px;
 
     z-index: 99;
     opacity: 0;
@@ -5161,7 +5201,7 @@ button {
 
     box-sizing: border-box;
     scrollbar-width: thin;
-    scrollbar-color: var(--bg-2) transparent;
+    scrollbar-color: var(--surface) transparent;
 }
 
 .privacy-popup.active {
@@ -5518,7 +5558,7 @@ body.privacy-open {
         grid-column: 2;
         grid-row: 1;
         justify-self: end;
-        margin-right: 2px;
+        margin-right: 2fpx;
     }
 
     .footer-copy {
@@ -5679,8 +5719,8 @@ body.privacy-open {
 
     .mobile-service-header h3 {
         font-family: var(--font-display);
-        font-size: 1.35rem;
-        font-weight: 700;
+        font-size: 1rem;
+        font-weight: 600;
         letter-spacing: -0.03em;
         line-height: 1.15;
         color: var(--text);
@@ -5723,10 +5763,6 @@ body.privacy-open {
         -ms-overflow-style: none;
     }
 
-    .mobile-service-content::-webkit-scrollbar {
-        display: none;
-    }
-
     .mobile-service-desc {
         font-size: 0.95rem;
         color: var(--text);
@@ -5764,5 +5800,16 @@ body.privacy-open {
 
     body.mobile-service-open {
         overflow: hidden;
+    }
+
+    .privacy-popup {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: min(80vh, 720px);
     }
 }
