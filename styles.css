@@ -2133,6 +2133,11 @@ button {
 
 @media (max-width: 768px) {
 
+    .hero-sub {
+        margin: 0 auto 40px;
+        font-size: 0.95rem;
+    }
+
     .project-view-btn {
         width: fit-content;
         max-width: fit-content;
