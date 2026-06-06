@@ -4,6 +4,9 @@
    ============================================ */
 
 :root {
+
+    color-scheme: dark;
+
     --bg: #080808;
     --bg-2: #0e0e0e;
     --bg-3: #141414;
@@ -48,6 +51,7 @@ html {
     /* ← ADD this */
     max-width: 100%;
     /* ← ADD this */
+    background-color: #080808;
 }
 
 body {
