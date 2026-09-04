@@ -3,20 +3,9 @@
    Dark Theme | Modern | World-Class
    ============================================ */
 
-/* ============================================
-   BROWSER / MOBILE UI COLOR SUPPORT
-   ============================================ */
-
 :root {
     color-scheme: dark;
-}
 
-html,
-body {
-    background-color: #080808;
-}
-
-:root {
     --bg: #080808;
     --bg-2: #0e0e0e;
     --bg-3: #141414;
@@ -61,10 +50,11 @@ html {
     /* ← ADD this */
     max-width: 100%;
     /* ← ADD this */
+    background-color: #080808;
 }
 
 body {
-    background: var(--bg);
+    background-color: #080808;
     color: var(--text);
     font-family: var(--font-body);
     font-size: 1.125rem;
@@ -2168,7 +2158,7 @@ button {
     }
 
     .section-title {
-        font-size: clamp(2.7rem, 5vw, 2.7rem);
+        font-size: clamp(2.5rem, 5vw, 2.5rem);
         font-weight: 600;
     }
 
@@ -3172,9 +3162,11 @@ button {
 
 /* ── TOP STATS ROW ── */
 .ld-stats-row {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    overflow: hidden;
 }
 
 .ld-stat-card {
@@ -3188,7 +3180,7 @@ button {
 }
 
 .ld-stat-label {
-    font-size: 0.62rem;
+    font-size: 0.5rem;
     color: var(--text-2);
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -3279,17 +3271,19 @@ button {
 
 /* ── STATUS ROW ── */
 .ld-status-row {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
+    gap: 5px;
+    overflow: hidden;
 }
 
 .ld-status-item {
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.62rem;
+    font-size: 0.5rem;
     color: var(--text-2);
     text-transform: uppercase;
     background: rgba(255, 255, 255, 0.03);
