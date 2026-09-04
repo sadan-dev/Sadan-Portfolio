@@ -3239,35 +3239,6 @@ button {
     box-shadow: 0 0 12px rgba(200, 245, 66, 0.2);
 }
 
-/* Trend line SVG */
-.ld-trend-line {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-}
-
-/* Peak dot at top-right */
-.ld-peak-dot {
-    position: absolute;
-    top: 6px;
-    right: 14px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 10px rgba(200, 245, 66, 0.7);
-    z-index: 4;
-}
-
-.ld-peak-ring {
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    border: 1px solid rgba(200, 245, 66, 0.35);
-}
-
 /* ── STATUS ROW ── */
 .ld-status-row {
     position: relative;
