@@ -3138,7 +3138,7 @@ button {
     background: rgba(10, 14, 10, 0.9);
     border: 1px solid rgba(153, 0, 255, 0.2);
     border-radius: 17px;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 15px;
